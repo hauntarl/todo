@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FC2126C12BD58EF4002A51CB /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126C02BD58EF4002A51CB /* Card.swift */; };
 		FC2126C32BD59EB1002A51CB /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126C22BD59EB1002A51CB /* Date+Extension.swift */; };
+		FC2126C52BD5A03A002A51CB /* DateInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126C42BD5A03A002A51CB /* DateInputField.swift */; };
 		FC37DBB92BD4F32D00F159F7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC37DBB82BD4F32D00F159F7 /* Launch Screen.storyboard */; };
 		FC37DBBC2BD4F87A00F159F7 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37DBBB2BD4F87A00F159F7 /* Checkbox.swift */; };
 		FC37DBBE2BD5030400F159F7 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37DBBD2BD5030400F159F7 /* RadioButton.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		FC2126C02BD58EF4002A51CB /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		FC2126C22BD59EB1002A51CB /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		FC2126C42BD5A03A002A51CB /* DateInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputField.swift; sourceTree = "<group>"; };
 		FC37DBB82BD4F32D00F159F7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FC37DBBB2BD4F87A00F159F7 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		FC37DBBD2BD5030400F159F7 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
@@ -48,6 +50,7 @@
 				FC37DBBB2BD4F87A00F159F7 /* Checkbox.swift */,
 				FC37DBBD2BD5030400F159F7 /* RadioButton.swift */,
 				FC2126C02BD58EF4002A51CB /* Card.swift */,
+				FC2126C42BD5A03A002A51CB /* DateInputField.swift */,
 				FC2126C22BD59EB1002A51CB /* Date+Extension.swift */,
 			);
 			path = Components;
@@ -163,6 +166,7 @@
 			files = (
 				FC6DA5C42BD4EDA100EE029A /* ContentView.swift in Sources */,
 				FC6DA5C22BD4EDA100EE029A /* TodoApp.swift in Sources */,
+				FC2126C52BD5A03A002A51CB /* DateInputField.swift in Sources */,
 				FC2126C12BD58EF4002A51CB /* Card.swift in Sources */,
 				FC37DBBC2BD4F87A00F159F7 /* Checkbox.swift in Sources */,
 				FC37DBBE2BD5030400F159F7 /* RadioButton.swift in Sources */,
