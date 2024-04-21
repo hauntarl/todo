@@ -27,11 +27,13 @@ struct Card: View {
     let onDelete: () -> Void
     
     var body: some View {
-        HStack(alignment: .center, spacing: 20) {
+        HStack(alignment: .center, spacing: .zero) {
             editButton
+            Spacer().frame(width: 20)
             details
             Spacer()
             checkbox
+            Spacer().frame(width: 20)
             deleteButton
         }
         .padding(16)
@@ -50,13 +52,11 @@ struct Card: View {
                 .lineLimit(2)
                 .truncationMode(.tail)
             
-            Spacer()
-                .frame(height: 5)
+            Spacer().frame(height: 5)
             
             Text("Due: \(dueDate.formatted)")
             
-            Spacer()
-                .frame(height: 2)
+            Spacer().frame(height: 2)
             
             Text("Created: \(createdDate.formatted)")
         }
@@ -73,7 +73,7 @@ struct Card: View {
         Button(action: onEdit) {
             Image(systemName: "pencil")
         }
-        .font(.title)
+        .font(.title2)
         .fontWeight(.black)
         .foregroundStyle(.taskPrimary)
     }
@@ -103,6 +103,7 @@ struct Card: View {
             } onDelete: {
                 print("Delete button tapped")
             }
+            .padding(.horizontal)
         }
     }
     

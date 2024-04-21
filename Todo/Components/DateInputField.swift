@@ -99,6 +99,7 @@ struct DateInputField: View {
         
         var body: some View {
             DateInputField(date: $date.animation())
+                .padding()
         }
     }
     
