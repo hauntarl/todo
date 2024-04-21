@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FC37DBB92BD4F32D00F159F7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC37DBB82BD4F32D00F159F7 /* Launch Screen.storyboard */; };
+		FC37DBBC2BD4F87A00F159F7 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37DBBB2BD4F87A00F159F7 /* Checkbox.swift */; };
+		FC37DBBE2BD5030400F159F7 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37DBBD2BD5030400F159F7 /* RadioButton.swift */; };
 		FC6DA5C22BD4EDA100EE029A /* TodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6DA5C12BD4EDA100EE029A /* TodoApp.swift */; };
 		FC6DA5C42BD4EDA100EE029A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6DA5C32BD4EDA100EE029A /* ContentView.swift */; };
 		FC6DA5C62BD4EDA200EE029A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6DA5C52BD4EDA200EE029A /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 
 /* Begin PBXFileReference section */
 		FC37DBB82BD4F32D00F159F7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		FC37DBBB2BD4F87A00F159F7 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
+		FC37DBBD2BD5030400F159F7 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		FC6DA5BE2BD4EDA100EE029A /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6DA5C12BD4EDA100EE029A /* TodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoApp.swift; sourceTree = "<group>"; };
 		FC6DA5C32BD4EDA100EE029A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,6 +38,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC37DBBA2BD4F86300F159F7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FC37DBBB2BD4F87A00F159F7 /* Checkbox.swift */,
+				FC37DBBD2BD5030400F159F7 /* RadioButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		FC6DA5B52BD4EDA100EE029A = {
 			isa = PBXGroup;
 			children = (
@@ -53,6 +66,7 @@
 		FC6DA5C02BD4EDA100EE029A /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				FC37DBBA2BD4F86300F159F7 /* Components */,
 				FC6DA5C12BD4EDA100EE029A /* TodoApp.swift */,
 				FC6DA5C32BD4EDA100EE029A /* ContentView.swift */,
 				FC37DBB82BD4F32D00F159F7 /* Launch Screen.storyboard */,
@@ -143,6 +157,8 @@
 			files = (
 				FC6DA5C42BD4EDA100EE029A /* ContentView.swift in Sources */,
 				FC6DA5C22BD4EDA100EE029A /* TodoApp.swift in Sources */,
+				FC37DBBC2BD4F87A00F159F7 /* Checkbox.swift in Sources */,
+				FC37DBBE2BD5030400F159F7 /* RadioButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
