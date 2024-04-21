@@ -40,13 +40,13 @@ struct Checkbox: View {
     
     private var borderedRectangle: some View {
         RoundedRectangle(cornerRadius: strokeWidth)
-            .stroke(.black, lineWidth: strokeWidth)
+            .stroke(.taskPrimary, lineWidth: strokeWidth)
             .padding(strokeWidth / 2)
     }
     
     private var filledRectangle: some View {
         RoundedRectangle(cornerRadius: size / 7)
-            .fill(.black)
+            .fill(.taskPrimary)
             .overlay {
                 Image(systemName: "checkmark")
                     .resizable()

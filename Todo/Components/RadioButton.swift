@@ -20,10 +20,11 @@ struct RadioButton: View {
     
     var body: some View {
         Circle()
-            .stroke(.black, lineWidth: size * 0.1)
+            .stroke(.taskPrimary, lineWidth: size * 0.1)
             .overlay {
                 if isActive {
                     Circle()
+                        .fill(.taskPrimary)
                         .frame(width: size * 0.6)
                         .transition(.scale)
                 }
