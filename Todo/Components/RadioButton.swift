@@ -21,18 +21,19 @@ struct RadioButton: View {
     var body: some View {
         Circle()
             .stroke(.taskPrimary, lineWidth: size * 0.1)
-            .overlay {
-                if isActive {
-                    Circle()
-                        .fill(.taskPrimary)
-                        .frame(width: size * 0.6)
-                        .transition(.scale)
-                }
-            }
+            .overlay(isActive ? filledCircle : nil)
             .frame(width: size)
             .onTapGesture {
                 isActive.toggle()
             }
+    }
+    
+    // Filled circle that is displayed when the button is active
+    private var filledCircle: some View {
+        Circle()
+            .fill(.taskPrimary)
+            .frame(width: size * 0.6)
+            .transition(.scale)
     }
 }
 
