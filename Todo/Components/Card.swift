@@ -53,14 +53,12 @@ struct Card: View {
             Spacer()
                 .frame(height: 5)
             
-            Text("Due: ")
-            + Text(dueDate.formatted(date: .abbreviated, time: .omitted))
+            Text("Due: \(dueDate.formatted)")
             
             Spacer()
                 .frame(height: 2)
             
-            Text("Created: ")
-            + Text(createdDate.formatted(date: .abbreviated, time: .omitted))
+            Text("Created: \(createdDate.formatted)")
         }
         .foregroundStyle(.taskPrimary)
     }
