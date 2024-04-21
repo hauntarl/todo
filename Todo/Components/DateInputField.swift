@@ -98,8 +98,11 @@ struct DateInputField: View {
         @State private var date: Date = .now
         
         var body: some View {
-            DateInputField(date: $date.animation())
-                .padding()
+            VStack {
+                DateInputField(date: $date.animation())
+                Spacer()
+            }
+            .padding()
         }
     }
     
