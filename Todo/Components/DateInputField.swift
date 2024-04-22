@@ -57,15 +57,18 @@ struct DateInputField: View {
     // Creates a graphical style date picker
     private var datePicker: some View {
         DatePicker(
-            "",
             selection: Binding(
                 get: { date ?? .now },
                 set: { date = $0 }
             ),
             displayedComponents: [.date]
-        )
+        ) {
+            EmptyView()
+        }
         .datePickerStyle(.graphical)
         .tint(.calendarTint)
+        .frame(width: 320)
+        .preferredColorScheme(.light)
         .transition(
             .scale
                 .combined(with: .move(edge: .trailing))
