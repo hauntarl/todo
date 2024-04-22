@@ -34,9 +34,8 @@ struct UpdateView: View {
             taskDueDate
             Spacer().frame(height: 40)
             saveButton
-            Spacer()
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding(.horizontal)
     }
     
