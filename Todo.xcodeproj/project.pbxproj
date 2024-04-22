@@ -19,6 +19,7 @@
 		FC2126D52BD606E9002A51CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126D42BD606E9002A51CB /* ContentView.swift */; };
 		FC2126D72BD60B2F002A51CB /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126D62BD60B2F002A51CB /* CreateView.swift */; };
 		FC2126D92BD60BBB002A51CB /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126D82BD60BBB002A51CB /* EditView.swift */; };
+		FC2126DB2BD616E2002A51CB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126DA2BD616E2002A51CB /* Settings.swift */; };
 		FC37DBB92BD4F32D00F159F7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC37DBB82BD4F32D00F159F7 /* Launch Screen.storyboard */; };
 		FC37DBBC2BD4F87A00F159F7 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37DBBB2BD4F87A00F159F7 /* Checkbox.swift */; };
 		FC37DBBE2BD5030400F159F7 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37DBBD2BD5030400F159F7 /* RadioButton.swift */; };
@@ -40,6 +41,7 @@
 		FC2126D42BD606E9002A51CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FC2126D62BD60B2F002A51CB /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
 		FC2126D82BD60BBB002A51CB /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		FC2126DA2BD616E2002A51CB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		FC37DBB82BD4F32D00F159F7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FC37DBBB2BD4F87A00F159F7 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		FC37DBBD2BD5030400F159F7 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				FC2126CF2BD5E88A002A51CB /* NewTask.swift */,
 				FC2126C92BD5C76A002A51CB /* TaskItem.swift */,
 				FC2126CD2BD5CB72002A51CB /* TaskError.swift */,
+				FC2126DA2BD616E2002A51CB /* Settings.swift */,
 				FC2126CB2BD5C86E002A51CB /* Samples.swift */,
 			);
 			path = Models;
@@ -214,6 +217,7 @@
 				FC2126C12BD58EF4002A51CB /* Card.swift in Sources */,
 				FC37DBBC2BD4F87A00F159F7 /* Checkbox.swift in Sources */,
 				FC37DBBE2BD5030400F159F7 /* RadioButton.swift in Sources */,
+				FC2126DB2BD616E2002A51CB /* Settings.swift in Sources */,
 				FC2126D02BD5E88A002A51CB /* NewTask.swift in Sources */,
 				FC2126D92BD60BBB002A51CB /* EditView.swift in Sources */,
 				FC2126D52BD606E9002A51CB /* ContentView.swift in Sources */,
