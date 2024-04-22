@@ -83,10 +83,9 @@ struct TaskListView: View {
             case .newTask:
                 CreateView()
             case .editTask(let item):
-                EditView(item: item) { newValue in
-                    print("Item edited:")
-                    print("\t\(newValue.description)")
-                    print("\t\((newValue.dueAt ?? .defaultDate).formatted)")
+                EditView(item: item) { editedItem in
+                    print("\(editedItem.description)", terminator: ", ")
+                    print("\((editedItem.dueAt ?? .defaultDate).formatted)")
                 }
             }
 

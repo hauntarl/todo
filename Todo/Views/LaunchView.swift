@@ -9,9 +9,16 @@ import SwiftUI
 
 struct LaunchView: View {
     @EnvironmentObject private var route: TaskNavigation
+    @State private var showingContent = false
     
     var body: some View {
-        content
+        if showingContent {
+            content
+                .transition(.move(edge: .trailing))
+        } else {
+            loading
+                .transition(.move(edge: .leading))
+        }
     }
     
     private var content: some View {
@@ -31,9 +38,38 @@ struct LaunchView: View {
             SettingsView()
         case .newTask:
             CreateView()
-        case .editTask(_):
-            // TODO: Add navigation destination for edit view
-            EmptyView()
+        case .editTask(let item):
+            EditView(item: item) { editedItem in
+                // TODO: Update edited task
+                print("\(editedItem.description)", terminator: ", ")
+                print("\((editedItem.dueAt ?? .defaultDate).formatted)")
+            }
+        }
+    }
+    
+    private var loading: some View {
+        ZStack(alignment: .bottom) {
+            Image(.logo)
+                .resizable()
+                .scaledToFit()
+                .frame(maxHeight: .infinity)
+                .ignoresSafeArea()
+            
+            VStack(spacing: 20) {
+                Text("Loading samples...")
+                    .foregroundStyle(.accent)
+                ProgressView()
+            }
+        }
+        .onAppear(perform: loadTasks)
+    }
+    
+    private func loadTasks() {
+        Task {
+            try? await Task.sleep(for: .seconds(2))
+            withAnimation(.bouncy(duration: 0.75)) {
+                showingContent = true
+            }
         }
     }
 }
