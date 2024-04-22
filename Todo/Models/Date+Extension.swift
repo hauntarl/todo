@@ -24,7 +24,7 @@ extension Date {
         Self.dateFormatter.string(from: self)
     }
 
-    /// Converts the date into `ISO6801` format, including micro-seconds
+    /// Converts the date into `ISO8601` format, including micro-seconds
     var iso8601: String {
         ISO8601Format(.iso8601WithTimeZone(includingFractionalSeconds: true))
     }
@@ -36,14 +36,14 @@ extension Date {
         return formatter
     }()
     
-    static var dateParserWithFractionalSeconds: DateFormatter = {
+    private static var dateParserWithFractionalSeconds: DateFormatter = {
         var formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         formatter.timeZone = .gmt
         return formatter
     }()
     
-    static var dateParser: DateFormatter = {
+    private static var dateParser: DateFormatter = {
         var formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         formatter.timeZone = .gmt

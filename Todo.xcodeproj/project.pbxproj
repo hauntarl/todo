@@ -74,6 +74,7 @@
 				FC2126CD2BD5CB72002A51CB /* TaskError.swift */,
 				FC2126DA2BD616E2002A51CB /* Settings.swift */,
 				FC2126CB2BD5C86E002A51CB /* Samples.swift */,
+				FC2126C22BD59EB1002A51CB /* Date+Extension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -98,7 +99,6 @@
 				FC2126C02BD58EF4002A51CB /* Card.swift */,
 				FC2126C42BD5A03A002A51CB /* DateInputField.swift */,
 				FC2126C62BD5C3BF002A51CB /* TextInputField.swift */,
-				FC2126C22BD59EB1002A51CB /* Date+Extension.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
