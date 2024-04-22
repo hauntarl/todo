@@ -13,7 +13,7 @@ import Foundation
  */
 struct NewTask: Encodable {
     var description: String = ""
-    var dueAt: Date = .now
+    var dueAt: Date?
     var completed: Bool = false
     
     enum CodingKeys: String, CodingKey {
@@ -25,7 +25,7 @@ struct NewTask: Encodable {
     func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.description, forKey: .description)
-        try container.encode(self.dueAt.iso8601, forKey: .dueAt)
+        try container.encode((self.dueAt ?? Date(timeIntervalSince1970: .zero)).iso8601, forKey: .dueAt)
         try container.encode(self.completed, forKey: .completed)
     }
 }

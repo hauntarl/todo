@@ -14,15 +14,14 @@ import SwiftUI
     - date: A binding to manage the currently selected `Date`.
  */
 struct DateInputField: View {
-    @Binding var date: Date
+    @Binding var date: Date?
 
     @State private var isShowingCalendar = false
-    @State private var isDateSelected = false
     
     var body: some View {
         VStack {
             HStack {
-                if isDateSelected {
+                if date != nil {
                     content
                 }
                 Spacer()
@@ -31,17 +30,11 @@ struct DateInputField: View {
             .padding(12)
             .background(filledRectangle)
         }
-        .onChange(of: date) {
-            isShowingCalendar = false
-            withAnimation {
-                isDateSelected = true
-            }
-        }
     }
     
     // Displays formatted currently selected date
     private var content: some View {
-        Text(date.formatted)
+        Text(date?.formatted ?? "")
             .foregroundStyle(.taskPrimary)
             .transition(.opacity)
     }
@@ -65,25 +58,31 @@ struct DateInputField: View {
     private var datePicker: some View {
         DatePicker(
             "",
-            selection: $date,
-            in: .now...,
+            selection: Binding(
+                get: { date ?? .now },
+                set: { date = $0 }
+            ),
             displayedComponents: [.date]
         )
         .datePickerStyle(.graphical)
         .tint(.calendarTint)
-        .preferredColorScheme(.light)
         .transition(
             .scale
                 .combined(with: .move(edge: .trailing))
                 .combined(with: .opacity)
         )
+        .onAppear {
+            if date == nil {
+                date = .now
+            }
+        }
     }
     
     // Displays a background for the component
     private var filledRectangle: some View {
         RoundedRectangle(cornerRadius: 5)
             .fill(.taskSecondary)
-            .overlay(isDateSelected ? strokedRectangle : nil)
+            .overlay(date != nil ? strokedRectangle : nil)
     }
     
     // Displays a border around the component
@@ -96,7 +95,7 @@ struct DateInputField: View {
 
 #Preview {
     struct DateInputFieldPreview: View {
-        @State private var date: Date = .now
+        @State private var date: Date?
         
         var body: some View {
             VStack {

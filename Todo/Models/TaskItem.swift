@@ -12,11 +12,11 @@ import Foundation
  refer [API Specification](https://github.com/hauntarl/todo-api/blob/main/Docs/API.md) for more details.
  */
 struct TaskItem: Codable, Identifiable {
-    let id: String
-    let description: String
-    let createdAt: Date
-    let dueAt: Date
-    let completed: Bool
+    var id: String
+    var description: String
+    var createdAt: Date
+    var dueAt: Date?
+    var completed: Bool
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -47,7 +47,7 @@ struct TaskItem: Codable, Identifiable {
         try container.encode(self.id, forKey: .id)
         try container.encode(self.description, forKey: .description)
         try container.encode(self.createdAt.iso8601, forKey: .createdAt)
-        try container.encode(self.dueAt.iso8601, forKey: .dueAt)
+        try container.encode((self.dueAt ?? Date(timeIntervalSince1970: .zero)).iso8601, forKey: .dueAt)
         try container.encode(self.completed, forKey: .completed)
     }
 }
