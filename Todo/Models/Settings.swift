@@ -15,8 +15,10 @@ import Foundation
     - sortBy: Enum to determine the sort key for tasks
     - orderBy: Enum to determine the order of tasks
  
- The raw values for each enum is a convenience wrapper used for calculating query parameters for fetch tasks api, refer
- [API Specification](https://github.com/hauntarl/todo-api/blob/main/Docs/API.md) for more details.
+ The description for each enum is a convenience wrapper used for calculating query
+ parameters for fetch tasks api.
+ 
+ Refer [API Specification](https://github.com/hauntarl/todo-api/blob/main/Docs/API.md) for more details.
  */
 struct Settings {
     var filter: Filter = .all
@@ -28,7 +30,7 @@ struct Settings {
         case complete = "Complete"
         case incomplete = "Incomplete"
         
-        var rawValue: Bool {
+        var description: Bool {
             self == .complete
         }
     }
@@ -37,7 +39,7 @@ struct Settings {
         case due = "Due"
         case created = "Created"
         
-        var rawValue: String {
+        var description: String {
             switch self {
             case .due:
                 "dueDate"
@@ -51,7 +53,7 @@ struct Settings {
         case ascending = "Ascending"
         case descending = "Descending"
         
-        var rawValue: String {
+        var description: String {
             self == .descending ? "-" : ""
         }
     }
