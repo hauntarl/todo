@@ -14,59 +14,49 @@ import SwiftUI
     - items: List of task items to display
  */
 struct TaskListView: View {
-    @Binding var items: [TaskItem]
+    @State var items: [TaskItem] = TaskItem.samples
     
     var body: some View {
-        ScrollView {
-            LazyVStack(spacing: 16) {
-                ForEach(items, content: buildTaskDetails)
-            }
+        VStack(alignment: .center, spacing: .zero) {
+            navigationTitle
+            Spacer().frame(height: 20)
+            taskList
         }
-        .scrollIndicators(.hidden)
         .padding(.horizontal)
     }
     
-    private func buildTaskDetails(for item: TaskItem) -> some View {
-        let index = items.firstIndex { $0.id == item.id }!
-        
-        return Card(
-            title: item.description,
-            dueDate: item.dueAt ?? .defaultDate,
-            createdDate: item.createdAt,
-            isCompleted: $items[index].completed,
-            onEdit: { editTask(at: index) },
-            onDelete: { deleteTask(at: index) }
-        )
-        .onChange(of: items[index].completed) {
-            update(task: items[index])
+    private var navigationTitle: some View {
+        HStack(alignment: .firstTextBaseline, spacing: .zero) {
+            navigationButton(icon: "gearshape.fill") {
+                // TODO: Open settings
+            }
+            
+            Spacer()
+            
+            Text("Task List")
+                .font(.largeTitle)
+            
+            Spacer()
+            
+            navigationButton(icon: "plus.circle.fill") {
+                // TODO: Open new task view
+            }
         }
-        .transition(.scale.combined(with: .move(edge: .leading)))
+        .padding(.horizontal)
     }
     
-    private func editTask(at index: Int) {
-        // TODO: Navigate to EditView
-    }
-    
-    private func update(task: TaskItem) {
-        // TODO: Update task completion status
-    }
-    
-    private func deleteTask(at index: Int) {
-        withAnimation(.bouncy(duration: 0.75)) {
-            _ = items.remove(at: index)
+    private func navigationButton(
+        icon: String,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
+            Image(systemName: icon)
+                .font(.title)
+                .foregroundStyle(.taskPrimary)
         }
-        // TODO: Remove task
     }
 }
 
 #Preview {
-    struct TaskListViewPreview: View {
-        @State private var items = TaskItem.samples
-        
-        var body: some View {
-            TaskListView(items: $items)
-        }
-    }
-    
-    return TaskListViewPreview()
+    TaskListView()
 }
