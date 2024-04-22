@@ -7,23 +7,34 @@
 
 import SwiftUI
 
+/**
+ SettingsView displays all the available filter and sort options for the task list
+ */
 struct SettingsView: View {
-    @Binding var settings: Settings
+    @EnvironmentObject private var route: TaskNavigation
+    @EnvironmentObject private var settings: Settings
     
     var body: some View {
         VStack(alignment: .center, spacing: .zero) {
             navigationTitle
             Spacer().frame(height: 40)
-            filterOptions
-            Spacer().frame(height: 40)
-            sortByOptions
-            Spacer().frame(height: 40)
-            orderByOptions
+            
+            Group {
+                filterOptions
+                Spacer().frame(height: 40)
+                sortByOptions
+                Spacer().frame(height: 40)
+                orderByOptions
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
+            
             Spacer().frame(height: 40)
             saveButton
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding(.horizontal)
+        .navigationBarBackButtonHidden()
     }
     
     private var navigationTitle: some View {
@@ -49,8 +60,6 @@ struct SettingsView: View {
             }
             .padding(.leading, 4)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal)
     }
     
     private var sortByOptions: some View {
@@ -71,8 +80,6 @@ struct SettingsView: View {
             }
             .padding(.leading, 4)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal)
     }
     
     private var orderByOptions: some View {
@@ -93,13 +100,12 @@ struct SettingsView: View {
             }
             .padding(.leading, 4)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal)
     }
     
     private var saveButton: some View {
         Button("Save") {
             // TODO: Save settings and update tasks based on new filters
+            route.dismiss()
         }
         .foregroundStyle(.taskBackground)
         .padding(.horizontal, 20)
@@ -113,11 +119,17 @@ struct SettingsView: View {
 
 #Preview {
     struct SettingsViewPreview: View {
-        @State private var settings = Settings()
+        @StateObject private var route = TaskNavigation()
+        @StateObject private var settings = Settings()
         
         var body: some View {
-            SettingsView(settings: $settings)
+            NavigationStack(path: $route.path) {
+                SettingsView()
+            }
+            .environmentObject(route)
+            .environmentObject(settings)
         }
     }
+    
     return SettingsViewPreview()
 }

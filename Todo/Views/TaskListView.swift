@@ -14,6 +14,7 @@ import SwiftUI
     - items: List of task items to display
  */
 struct TaskListView: View {
+    @EnvironmentObject var route: TaskNavigation
     @State var items: [TaskItem] = TaskItem.samples
     
     var body: some View {
@@ -28,7 +29,7 @@ struct TaskListView: View {
     private var navigationTitle: some View {
         HStack(alignment: .firstTextBaseline, spacing: .zero) {
             navigationButton(icon: "gearshape.fill") {
-                // TODO: Open settings
+                route.navigate(to: .settings)
             }
             
             Spacer()
@@ -39,7 +40,7 @@ struct TaskListView: View {
             Spacer()
             
             navigationButton(icon: "plus.circle.fill") {
-                // TODO: Open new task view
+                route.navigate(to: .newTask)
             }
         }
         .padding(.horizontal)
@@ -58,5 +59,39 @@ struct TaskListView: View {
 }
 
 #Preview {
-    TaskListView()
+    struct TaskListViewPreview: View {
+        @StateObject private var taskNavigation = TaskNavigation()
+        @StateObject private var settings = Settings()
+        
+        var body: some View {
+            NavigationStack(path: $taskNavigation.path) {
+                TaskListView()
+                    .navigationDestination(
+                        for: TaskNavigation.Destination.self,
+                        destination: destination
+                    )
+            }
+            .environmentObject(taskNavigation)
+            .environmentObject(settings)
+        }
+        
+        @ViewBuilder
+        private func destination(for value: TaskNavigation.Destination) -> some View {
+            switch value {
+            case .settings:
+                SettingsView()
+            case .newTask:
+                CreateView()
+            case .editTask(let item):
+                EditView(item: item) { newValue in
+                    print("Item edited:")
+                    print("\t\(newValue.description)")
+                    print("\t\((newValue.dueAt ?? .defaultDate).formatted)")
+                }
+            }
+
+        }
+    }
+    
+    return TaskListViewPreview()
 }

@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/**
+ This extension deals with all the task list related operations
+ */
 extension TaskListView {
     var taskList: some View {
         ScrollView {
@@ -25,17 +28,17 @@ extension TaskListView {
             dueDate: item.dueAt ?? .defaultDate,
             createdDate: item.createdAt,
             isCompleted: $items[index].completed,
-            onEdit: { editTask(at: index) },
+            onEdit: { edit(task: item) },
             onDelete: { deleteTask(at: index) }
         )
+        .transition(.scale.combined(with: .move(edge: .leading)))
         .onChange(of: items[index].completed) {
             update(task: items[index])
         }
-        .transition(.scale.combined(with: .move(edge: .leading)))
     }
     
-    func editTask(at index: Int) {
-        // TODO: Navigate to EditView
+    func edit(task: TaskItem) {
+        route.navigate(to: .editTask(item: task))
     }
     
     func update(task: TaskItem) {
