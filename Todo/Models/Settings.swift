@@ -18,12 +18,13 @@ import Foundation
  The description for each enum is a convenience wrapper used for calculating query
  parameters for fetch tasks api.
  
- Refer [API Specification](https://github.com/hauntarl/todo-api/blob/main/Docs/API.md) for more details.
+ Refer [API Specification](https://github.com/hauntarl/todo-api/blob/main/Docs/API.md) for
+ more details.
  */
-struct Settings {
-    var filter: Filter = .all
-    var sortBy: SortBy = .created
-    var orderBy: OrderBy = .descending
+class Settings: ObservableObject {
+    @Published var filter: Filter = .all
+    @Published var sortBy: SortBy = .created
+    @Published var orderBy: OrderBy = .descending
     
     enum Filter: String, CaseIterable {
         case all = "All"

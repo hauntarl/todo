@@ -8,7 +8,7 @@
 import Foundation
 
 /**
- Extension on Date defines a custom date formatter
+ Defines custom utility methods for date parsing and formatting
  */
 extension Date {
     /// Create a default date
@@ -16,7 +16,8 @@ extension Date {
     
     /// Creates a new date from given input using custom date parsers
     static func from(_ input: String) -> Self? {
-        Self.dateParserWithFractionalSeconds.date(from: input) ?? Self.dateParser.date(from: input)
+        Self.dateParserWithFractionalSeconds.date(from: input) 
+        ?? Self.dateParser.date(from: input)
     }
 
     /// Outputs date in `"April 21, 2024"` format

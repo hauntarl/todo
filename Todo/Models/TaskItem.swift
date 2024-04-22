@@ -8,10 +8,13 @@
 import Foundation
 
 /**
- TaskItem maps to the API request/response models for the **Fetch Task(s)** and **Update Task** operations,
- refer [API Specification](https://github.com/hauntarl/todo-api/blob/main/Docs/API.md) for more details.
+ TaskItem maps to the API request/response models for the **Fetch Task(s)**
+ and **Update Task** operations.
+ 
+ Refer [API Specification](https://github.com/hauntarl/todo-api/blob/main/Docs/API.md)
+ for more details.
  */
-struct TaskItem: Codable, Identifiable {
+struct TaskItem: Codable, Identifiable, Hashable {
     var id: String
     var description: String
     var createdAt: Date

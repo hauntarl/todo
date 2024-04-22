@@ -8,8 +8,10 @@
 import Foundation
 
 /**
- NewTask maps to the API request model for the **Create Task** operations, refer
- [API Specification](https://github.com/hauntarl/todo-api/blob/main/Docs/API.md) for more details.
+ NewTask maps to the API request model for the **Create Task** operations.
+ 
+ Refer [API Specification](https://github.com/hauntarl/todo-api/blob/main/Docs/API.md) for
+ more details.
  */
 struct NewTask: Encodable {
     var description: String = ""
