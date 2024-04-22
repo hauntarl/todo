@@ -71,6 +71,7 @@ struct DateInputField: View {
         )
         .datePickerStyle(.graphical)
         .tint(.calendarTint)
+        .preferredColorScheme(.light)
         .transition(
             .scale
                 .combined(with: .move(edge: .trailing))
