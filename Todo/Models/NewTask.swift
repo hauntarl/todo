@@ -12,8 +12,8 @@ import Foundation
  [API Specification](https://github.com/hauntarl/todo-api/blob/main/Docs/API.md) for more details.
  */
 struct NewTask: Encodable {
-    let description: String
-    let dueAt: Date
+    var description: String = ""
+    var dueAt: Date = .now
     var completed: Bool = false
     
     enum CodingKeys: String, CodingKey {
