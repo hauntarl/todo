@@ -97,7 +97,7 @@ struct Card: View {
                 title: "Grocery Shopping",
                 dueDate: Date.now,
                 createdDate: Date.now,
-                isCompleted: $isCompleted.animation()
+                isCompleted: $isCompleted
             ) {
                 print("Edit button tapped")
             } onDelete: {

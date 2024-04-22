@@ -30,7 +30,9 @@ struct Checkbox: View {
         }
         .frame(width: size, height: size)
         .onTapGesture {
-            isSelected.toggle()
+            withAnimation {
+                isSelected.toggle()
+            }
         }
     }
     

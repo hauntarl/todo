@@ -37,7 +37,7 @@ struct TaskItem: Codable, Identifiable {
         
         // Parse the dueDate string into Swift Date object
         let dueDate = try container.decode(String.self, forKey: .dueAt)
-        self.dueAt = Date.from(dueDate) ?? Date(timeIntervalSince1970: .zero)
+        self.dueAt = Date.from(dueDate) ?? .defaultDate
         
         self.completed = try container.decode(Bool.self, forKey: .completed)
     }
@@ -47,7 +47,7 @@ struct TaskItem: Codable, Identifiable {
         try container.encode(self.id, forKey: .id)
         try container.encode(self.description, forKey: .description)
         try container.encode(self.createdAt.iso8601, forKey: .createdAt)
-        try container.encode((self.dueAt ?? Date(timeIntervalSince1970: .zero)).iso8601, forKey: .dueAt)
+        try container.encode((self.dueAt ?? .defaultDate).iso8601, forKey: .dueAt)
         try container.encode(self.completed, forKey: .completed)
     }
 }

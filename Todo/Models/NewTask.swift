@@ -25,7 +25,7 @@ struct NewTask: Encodable {
     func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.description, forKey: .description)
-        try container.encode((self.dueAt ?? Date(timeIntervalSince1970: .zero)).iso8601, forKey: .dueAt)
+        try container.encode((self.dueAt ?? .defaultDate).iso8601, forKey: .dueAt)
         try container.encode(self.completed, forKey: .completed)
     }
 }

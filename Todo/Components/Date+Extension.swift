@@ -11,6 +11,9 @@ import Foundation
  Extension on Date defines a custom date formatter
  */
 extension Date {
+    /// Create a default date
+    static var defaultDate = Self(timeIntervalSince1970: .zero)
+    
     /// Creates a new date from given input using custom date parsers
     static func from(_ input: String) -> Self? {
         Self.dateParserWithFractionalSeconds.date(from: input) ?? Self.dateParser.date(from: input)
