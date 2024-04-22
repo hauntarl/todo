@@ -15,7 +15,7 @@ import SwiftUI
     - size: Defines the size of this component
  */
 struct RadioButton: View {
-    @Binding var isActive: Bool
+    var isActive: Bool
     var size: Double = 30
     
     var body: some View {
@@ -23,9 +23,6 @@ struct RadioButton: View {
             .stroke(.taskPrimary, lineWidth: size * 0.1)
             .overlay(isActive ? filledCircle : nil)
             .frame(width: size)
-            .onTapGesture {
-                isActive.toggle()
-            }
     }
     
     // Filled circle that is displayed when the button is active
@@ -42,7 +39,12 @@ struct RadioButton: View {
         @State private var isActive = false
         
         var body: some View {
-            RadioButton(isActive: $isActive.animation(), size: 60)
+            RadioButton(isActive: isActive, size: 60)
+                .onTapGesture {
+                    withAnimation {
+                        isActive.toggle()
+                    }
+                }
         }
     }
     
