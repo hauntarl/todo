@@ -22,11 +22,11 @@ import Foundation
  more details.
  */
 class Settings: ObservableObject {
-    @Published var filter: Filter = .all
+    @Published var filter: FilterBy = .all
     @Published var sortBy: SortBy = .created
     @Published var orderBy: OrderBy = .descending
     
-    enum Filter: String, CaseIterable {
+    enum FilterBy: String, CaseIterable {
         case all = "All"
         case complete = "Complete"
         case incomplete = "Incomplete"

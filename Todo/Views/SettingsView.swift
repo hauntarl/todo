@@ -47,7 +47,7 @@ struct SettingsView: View {
             Text("Filters")
                 .font(.title2)
             
-            ForEach(Settings.Filter.allCases, id: \.self) { option in
+            ForEach(Settings.FilterBy.allCases, id: \.self) { option in
                 HStack(alignment: .center, spacing: 20) {
                     RadioButton(isActive: settings.filter == option, size: 20)
                     Text(option.rawValue)

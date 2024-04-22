@@ -77,9 +77,9 @@
 				FC2126C92BD5C76A002A51CB /* TaskItem.swift */,
 				FC2126CD2BD5CB72002A51CB /* TaskError.swift */,
 				FC2126DA2BD616E2002A51CB /* Settings.swift */,
-				FC2126CB2BD5C86E002A51CB /* Samples.swift */,
-				FC2126C22BD59EB1002A51CB /* Date+Extension.swift */,
 				FC2126EB2BD6E7CA002A51CB /* TaskNavigation.swift */,
+				FC2126C22BD59EB1002A51CB /* Date+Extension.swift */,
+				FC2126CB2BD5C86E002A51CB /* Samples.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
