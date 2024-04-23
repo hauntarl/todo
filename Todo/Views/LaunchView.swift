@@ -36,6 +36,9 @@ struct LaunchView: View {
             withAnimation(.bouncy(duration: 0.75)) {
                 errorPopupMessage = newValue
             }
+            if let newValue {
+                print(newValue)
+            }
         }
     }
     
@@ -98,21 +101,28 @@ struct LaunchView: View {
             }
             .padding()
             .task {
-                try? await Task.sleep(for: .seconds(5))
+                try? await Task.sleep(for: .seconds(10))
                 manager.errorMessage = nil
             }
     }
     
     private func fetchTasks() async {
-        // TODO: Remove createSamples() once the server uses persistent storage
-        await createSamples()
-        await manager.fetchTasks(using: settings)
-//        if manager.errorMessage == nil {
-//            withAnimation(.bouncy(duration: 0.75)) {
-//                showingContent = true
-//            }
-//        }
-        print(manager.items)
+        await manager.fetchTasks(for: settings)
+        
+        // TODO: Remove once the api uses persistent storage
+        // Create samples when the api doesn't have any tasks
+        // Comment the below if-block if you don't want to pre-populate the server
+        if manager.items.isEmpty {
+            await createSamples()
+            await manager.fetchTasks(for: settings)
+            print("Pre-populated server with samples.")
+        }
+        
+        if manager.errorMessage == nil {
+            withAnimation(.bouncy(duration: 0.75)) {
+                showingContent = true
+            }
+        }
     }
     
     /// As the api is currently using in-memory database, this function pre-populates

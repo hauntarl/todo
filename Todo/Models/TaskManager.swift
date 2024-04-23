@@ -23,7 +23,7 @@ class TaskManager: ObservableObject {
     
     /// Fetches the list of tasks from the service based on the provided
     /// filter and sort configuration.
-    func fetchTasks(using config: Settings) async {
+    func fetchTasks(for config: Settings) async {
         let url = service.fetchTasksURL(
             filterBy: config.filter.description,
             sortBy: "\(config.orderBy.description)\(config.sortBy.description)"
