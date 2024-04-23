@@ -150,9 +150,9 @@ struct SettingsView: View {
         .foregroundStyle(.taskBackground)
         .disabled(isSaveButtonDisabled)
         .padding(.horizontal, 20)
-        .padding(.vertical, 10)
+        .padding(.vertical, 8)
         .background {
-            RoundedRectangle(cornerRadius: 5)
+            RoundedRectangle(cornerRadius: 4)
                 .fill(isSaveButtonDisabled ? .accent : .taskPrimary)
         }
         .animation(.default, value: isSaveButtonDisabled)

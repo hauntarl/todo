@@ -30,15 +30,17 @@ struct UpdateView: View {
     var body: some View {
         VStack(alignment: .center, spacing: .zero) {
             navigationTitle
-            Spacer().frame(height: 40)
+            Spacer().frame(height: 35)
             taskDescription
-            Spacer().frame(height: 20)
+            Spacer().frame(height: 19)
             taskDueDate
-            Spacer().frame(height: 40)
+            Spacer().frame(height: 54)
             saveButton
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .padding(.horizontal)
+        .padding(.horizontal, 12)
+        .padding(.top, 67)
+        .ignoresSafeArea(edges: .top)
         .navigationBarBackButtonHidden()
     }
     
@@ -52,12 +54,13 @@ struct UpdateView: View {
             
             Text(title)
                 .font(.interLargeTitle)
+                .foregroundStyle(.taskPrimary)
                 .frame(maxWidth: .infinity, alignment: .center)
         }
     }
     
     var taskDescription: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 8) {
             Text("To-Do Item Name")
                 .font(.interBody)
                 .foregroundStyle(.taskPrimary)
@@ -65,11 +68,11 @@ struct UpdateView: View {
             TextInputField(text: $description)
                 .focused($isDescriptionFieldFocused)
         }
-        .padding(.horizontal)
+        .padding(.horizontal, 29 - 12)
     }
     
     var taskDueDate: some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 8) {
             Text("Select Due Date")
                 .font(.interBody)
                 .foregroundStyle(.taskPrimary)
@@ -78,7 +81,7 @@ struct UpdateView: View {
                 isDescriptionFieldFocused = false
             }
         }
-        .padding(.horizontal)
+        .padding(.horizontal, 29 - 12)
     }
     
     var saveButton: some View {
@@ -90,9 +93,9 @@ struct UpdateView: View {
         .foregroundStyle(.taskBackground)
         .disabled(isSaveButtonDisabled)
         .padding(.horizontal, 20)
-        .padding(.vertical, 10)
+        .padding(.vertical, 8)
         .background {
-            RoundedRectangle(cornerRadius: 5)
+            RoundedRectangle(cornerRadius: 4)
                 .fill(isSaveButtonDisabled ? .accent : .taskPrimary)
         }
         .animation(.default, value: isSaveButtonDisabled)
