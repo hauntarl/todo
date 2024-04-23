@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-/// The entry point for the application
+/** 
+ The entry point for the application
+ */
 struct LaunchView: View {
     @EnvironmentObject private var manager: TaskManager
     @EnvironmentObject private var route: TaskNavigation
@@ -72,7 +74,7 @@ struct LaunchView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 20) {
-                Text("Loading samples...")
+                Text("Loading tasks...")
                     .font(.interTitle2)
                     .foregroundStyle(.accent)
                 

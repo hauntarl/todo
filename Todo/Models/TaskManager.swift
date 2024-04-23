@@ -11,6 +11,10 @@ import SwiftUI
  TaskManager represents an aggregate model that is responsible for managing all task
  related operations like **fetching, creating, updating, and deleting** from the api.
  
+ - Parameters:
+    - items: Holds the list of `TaskItem` objects
+    - errorMessage: Holds any error messages generated throughout the app
+ 
  Refer [Model View (MV)](https://forums.developer.apple.com/forums/thread/699003)
  architecture for more details.
  */

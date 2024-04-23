@@ -161,7 +161,6 @@
 		FC6DA5C02BD4EDA100EE029A /* Todo */ = {
 			isa = PBXGroup;
 			children = (
-				FC2126FF2BD763F3002A51CB /* Info.plist */,
 				FC2126F12BD71E89002A51CB /* Network */,
 				FC2126C82BD5C74D002A51CB /* Models */,
 				FC2126D12BD600A8002A51CB /* Views */,
@@ -169,6 +168,7 @@
 				FC7660A52BD7B5FC004BDA61 /* Fonts */,
 				FC6DA5C12BD4EDA100EE029A /* TodoApp.swift */,
 				FC37DBB82BD4F32D00F159F7 /* Launch Screen.storyboard */,
+				FC2126FF2BD763F3002A51CB /* Info.plist */,
 				FC6DA5C52BD4EDA200EE029A /* Assets.xcassets */,
 				FC6DA5C72BD4EDA200EE029A /* Preview Content */,
 			);
