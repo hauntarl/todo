@@ -9,6 +9,9 @@ import SwiftUI
 
 /**
  EditView is responsible for updating an already existing task
+ 
+ - Parameters:
+    - item: The task item to edit
  */
 struct EditView: View {
     let item: TaskItem

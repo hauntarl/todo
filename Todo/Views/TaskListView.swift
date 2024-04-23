@@ -9,9 +9,6 @@ import SwiftUI
 
 /**
  TaskListView displays the provided task items in a vertical scroll view
- 
- - Parameters:
-    - items: List of task items to display
  */
 struct TaskListView: View {
     @EnvironmentObject var manager: TaskManager
@@ -90,7 +87,6 @@ struct TaskListView: View {
             case .editTask(let item):
                 EditView(item: item)
             }
-
         }
     }
     

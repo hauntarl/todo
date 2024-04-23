@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// The entry point for the application
 struct LaunchView: View {
     @EnvironmentObject private var manager: TaskManager
     @EnvironmentObject private var route: TaskNavigation
@@ -36,12 +37,10 @@ struct LaunchView: View {
             withAnimation(.bouncy(duration: 0.75)) {
                 errorPopupMessage = newValue
             }
-            if let newValue {
-                print(newValue)
-            }
         }
     }
     
+    /// Main content of the app
     private var content: some View {
         NavigationStack(path: $route.path) {
             TaskListView()
@@ -52,6 +51,7 @@ struct LaunchView: View {
         }
     }
     
+    /// Navigation destination controller
     @ViewBuilder
     private func destination(for value: TaskNavigation.Destination) -> some View {
         switch value {
@@ -84,6 +84,7 @@ struct LaunchView: View {
         }
     }
     
+    /// Displays an error message as a pop-up
     private var errorPopup: some View {
         Text(errorPopupMessage ?? "")
             .foregroundStyle(.taskBackground)
@@ -102,6 +103,7 @@ struct LaunchView: View {
             }
     }
     
+    /// Fetches task list
     private func fetchTasks() async {
         await manager.fetchTasks(for: settings)
         
