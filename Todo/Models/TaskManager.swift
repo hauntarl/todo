@@ -55,9 +55,9 @@ class TaskManager: ObservableObject {
         let url = service.updateTaskURL(for: task.id)
         await withErrorHandling {
             try await service.update(at: url, for: task)
-        }
-        if let index = items.firstIndex(where: { $0.id == task.id }) {
-            items[index] = task
+            if let index = items.firstIndex(where: { $0.id == task.id }) {
+                items[index] = task
+            }
         }
     }
     
