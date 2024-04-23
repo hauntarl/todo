@@ -13,11 +13,7 @@ import Foundation
  Refer [API Specification](https://github.com/hauntarl/todo-api/blob/main/Docs/API.md) for
  more details.
  */
-struct TaskError: Decodable, CustomStringConvertible {
+struct TaskError: Decodable {
     let title: String
     let status: Int
-    
-    var description: String {
-        "\(status): \(title)"
-    }
 }

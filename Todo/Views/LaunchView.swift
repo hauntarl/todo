@@ -13,7 +13,8 @@ struct LaunchView: View {
     @EnvironmentObject private var route: TaskNavigation
     @EnvironmentObject private var settings: Settings
     @State private var showingContent = false
-    @State private var errorPopupMessage: String?
+    @State private var errorPopupMessage: String = ""
+    @State private var errorPopupTask: Task<Void, Never>?
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -27,16 +28,14 @@ struct LaunchView: View {
                     .transition(.move(edge: .leading))
             }
             
-            if errorPopupMessage != nil {
+            if !errorPopupMessage.isEmpty {
                 errorPopup
                     .zIndex(2)
                     .transition(.move(edge: .bottom).combined(with: .opacity))
             }
         }
         .onChange(of: manager.errorMessage) { _, newValue in
-            withAnimation(.bouncy(duration: 0.75)) {
-                errorPopupMessage = newValue
-            }
+            updateErrorPopup(with: newValue ?? "")
         }
     }
     
@@ -86,7 +85,7 @@ struct LaunchView: View {
     
     /// Displays an error message as a pop-up
     private var errorPopup: some View {
-        Text(errorPopupMessage ?? "")
+        Text(errorPopupMessage)
             .foregroundStyle(.taskBackground)
             .lineLimit(3)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -97,10 +96,6 @@ struct LaunchView: View {
                     .shadow(radius: 10)
             }
             .padding()
-            .task {
-                try? await Task.sleep(for: .seconds(5))
-                manager.errorMessage = nil
-            }
     }
     
     /// Fetches task list
@@ -119,6 +114,30 @@ struct LaunchView: View {
         if manager.errorMessage == nil {
             withAnimation(.bouncy(duration: 0.75)) {
                 showingContent = true
+            }
+        }
+    }
+    
+    /// Controls the lifetime of error pop-up when a new error is generated
+    /// by the app
+    private func updateErrorPopup(with message: String) {
+        withAnimation(.bouncy(duration: 0.75)) {
+            errorPopupMessage = message
+        }
+        
+        errorPopupTask?.cancel()
+        if !message.isEmpty {
+            errorPopupTask = Task {
+                for _ in 0..<5 {
+                    if Task.isCancelled {
+                        return
+                    }
+                    try? await Task.sleep(for: .seconds(1))
+                }
+                if Task.isCancelled {
+                    return
+                }
+                manager.errorMessage = nil
             }
         }
     }

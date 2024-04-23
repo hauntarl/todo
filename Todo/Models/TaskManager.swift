@@ -78,7 +78,7 @@ class TaskManager: ObservableObject {
         } catch NetworkError.response(let message) {
             errorMessage = message
         } catch NetworkError.server(let error) {
-            errorMessage = error.description
+            errorMessage = error.title
         } catch {
             errorMessage = error.localizedDescription
         }
