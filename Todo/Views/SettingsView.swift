@@ -19,36 +19,50 @@ struct SettingsView: View {
     var body: some View {
         VStack(alignment: .center, spacing: .zero) {
             navigationTitle
-            Spacer().frame(height: 40)
+            
+            Spacer().frame(height: 33)
             
             Group {
                 filterOptions
-                Spacer().frame(height: 40)
+                Spacer().frame(height: 17)
                 sortByOptions
-                Spacer().frame(height: 40)
+                Spacer().frame(height: 17)
                 orderByOptions
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal)
+            .padding(.horizontal, 21)
             
-            Spacer().frame(height: 40)
+            Spacer().frame(height: 47)
             saveButton
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .padding(.horizontal)
+        .padding(.horizontal, 12)
+        .padding(.top, 67)
+        .ignoresSafeArea(edges: .top)
         .navigationBarBackButtonHidden()
     }
     
     private var navigationTitle: some View {
-        Text("Settings")
-            .font(.interLargeTitle)
-            .foregroundStyle(.taskPrimary)
+        ZStack(alignment: .leading) {
+            Button(action: route.dismiss) {
+                Label("Back", systemImage: "chevron.left")
+            }
+            .font(.interTitle2)
+            .foregroundStyle(.accent)
+            
+            Text("Settings")
+                .font(.interLargeTitle)
+                .foregroundStyle(.taskPrimary)
+                .frame(maxWidth: .infinity, alignment: .center)
+        }
     }
     
     private var filterOptions: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: .zero) {
             Text("Filters")
                 .font(.interTitle)
+            
+            Spacer().frame(height: 14)
             
             ForEach(Settings.FilterBy.allCases, id: \.self) { option in
                 buildOption(isActive: settings.filterBy == option, name: option.rawValue) {
@@ -58,15 +72,17 @@ struct SettingsView: View {
                 }
             }
             .font(.interBody)
-            .padding(.leading, 4)
+            .padding(.leading, 1)
         }
         .foregroundStyle(.taskPrimary)
     }
     
     private var sortByOptions: some View {
-        VStack(alignment: .leading, spacing: 20) {
+        VStack(alignment: .leading, spacing: .zero) {
             Text("Sort By")
                 .font(.interTitle)
+            
+            Spacer().frame(height: 14)
             
             ForEach(Settings.SortBy.allCases, id: \.self) { option in
                 buildOption(isActive: settings.sortBy == option, name: option.rawValue) {
@@ -76,15 +92,17 @@ struct SettingsView: View {
                 }
             }
             .font(.interBody)
-            .padding(.leading, 4)
+            .padding(.leading, 1)
         }
         .foregroundStyle(.taskPrimary)
     }
     
     private var orderByOptions: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text("Order By")
+        VStack(alignment: .leading, spacing: .zero) {
+            Text("Sort Date Direction")
                 .font(.interTitle)
+            
+            Spacer().frame(height: 14)
             
             ForEach(Settings.OrderBy.allCases, id: \.self) { option in
                 buildOption(isActive: settings.orderBy == option, name: option.rawValue) {
@@ -94,7 +112,7 @@ struct SettingsView: View {
                 }
             }
             .font(.interBody)
-            .padding(.leading, 4)
+            .padding(.leading, 1)
         }
         .foregroundStyle(.taskPrimary)
     }
@@ -104,15 +122,18 @@ struct SettingsView: View {
         name: String,
         action: @escaping () -> Void
     ) -> some View {
-        HStack(alignment: .center, spacing: 20) {
+        HStack(alignment: .center, spacing: 17) {
             ToggleIcon(
                 isActive: isActive,
                 active: .radioButtonFilled,
                 inactive: .radioButton,
-                size: 20
+                size: 20.23
             )
+            .padding((25 - 20.23) / 2)
+            
             Text(name)
         }
+        .padding(.bottom, 16)
         .onTapGesture(perform: action)
     }
     
