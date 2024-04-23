@@ -24,6 +24,12 @@
 		FC2126E62BD64609002A51CB /* TaskListView+Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126E52BD64609002A51CB /* TaskListView+Tasks.swift */; };
 		FC2126E82BD6E1B8002A51CB /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126E72BD6E1B8002A51CB /* LaunchView.swift */; };
 		FC2126EC2BD6E7CA002A51CB /* TaskNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126EB2BD6E7CA002A51CB /* TaskNavigation.swift */; };
+		FC2126EE2BD71898002A51CB /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126ED2BD71898002A51CB /* TaskManager.swift */; };
+		FC2126F52BD71F8E002A51CB /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126F42BD71F8E002A51CB /* NetworkService.swift */; };
+		FC2126F82BD73BE6002A51CB /* NetworkService+Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126F72BD73BE6002A51CB /* NetworkService+Fetch.swift */; };
+		FC2126FA2BD73C68002A51CB /* NetworkService+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126F92BD73C68002A51CB /* NetworkService+Create.swift */; };
+		FC2126FC2BD73C8F002A51CB /* NetworkService+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126FB2BD73C8F002A51CB /* NetworkService+Update.swift */; };
+		FC2126FE2BD73CB6002A51CB /* NetworkService+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126FD2BD73CB6002A51CB /* NetworkService+Delete.swift */; };
 		FC37DBB92BD4F32D00F159F7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC37DBB82BD4F32D00F159F7 /* Launch Screen.storyboard */; };
 		FC37DBBC2BD4F87A00F159F7 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37DBBB2BD4F87A00F159F7 /* Checkbox.swift */; };
 		FC37DBBE2BD5030400F159F7 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37DBBD2BD5030400F159F7 /* RadioButton.swift */; };
@@ -50,6 +56,12 @@
 		FC2126E52BD64609002A51CB /* TaskListView+Tasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskListView+Tasks.swift"; sourceTree = "<group>"; };
 		FC2126E72BD6E1B8002A51CB /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		FC2126EB2BD6E7CA002A51CB /* TaskNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNavigation.swift; sourceTree = "<group>"; };
+		FC2126ED2BD71898002A51CB /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		FC2126F42BD71F8E002A51CB /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		FC2126F72BD73BE6002A51CB /* NetworkService+Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Fetch.swift"; sourceTree = "<group>"; };
+		FC2126F92BD73C68002A51CB /* NetworkService+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Create.swift"; sourceTree = "<group>"; };
+		FC2126FB2BD73C8F002A51CB /* NetworkService+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Update.swift"; sourceTree = "<group>"; };
+		FC2126FD2BD73CB6002A51CB /* NetworkService+Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Delete.swift"; sourceTree = "<group>"; };
 		FC37DBB82BD4F32D00F159F7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FC37DBBB2BD4F87A00F159F7 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		FC37DBBD2BD5030400F159F7 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
@@ -78,6 +90,7 @@
 				FC2126CD2BD5CB72002A51CB /* TaskError.swift */,
 				FC2126DA2BD616E2002A51CB /* Settings.swift */,
 				FC2126EB2BD6E7CA002A51CB /* TaskNavigation.swift */,
+				FC2126ED2BD71898002A51CB /* TaskManager.swift */,
 				FC2126C22BD59EB1002A51CB /* Date+Extension.swift */,
 				FC2126CB2BD5C86E002A51CB /* Samples.swift */,
 			);
@@ -96,6 +109,18 @@
 				FC2126D22BD6011C002A51CB /* UpdateView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FC2126F12BD71E89002A51CB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FC2126F42BD71F8E002A51CB /* NetworkService.swift */,
+				FC2126F72BD73BE6002A51CB /* NetworkService+Fetch.swift */,
+				FC2126F92BD73C68002A51CB /* NetworkService+Create.swift */,
+				FC2126FB2BD73C8F002A51CB /* NetworkService+Update.swift */,
+				FC2126FD2BD73CB6002A51CB /* NetworkService+Delete.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		FC37DBBA2BD4F86300F159F7 /* Components */ = {
@@ -129,6 +154,7 @@
 		FC6DA5C02BD4EDA100EE029A /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				FC2126F12BD71E89002A51CB /* Network */,
 				FC2126C82BD5C74D002A51CB /* Models */,
 				FC2126D12BD600A8002A51CB /* Views */,
 				FC37DBBA2BD4F86300F159F7 /* Components */,
@@ -220,8 +246,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC2126C72BD5C3BF002A51CB /* TextInputField.swift in Sources */,
+				FC2126F52BD71F8E002A51CB /* NetworkService.swift in Sources */,
 				FC2126E82BD6E1B8002A51CB /* LaunchView.swift in Sources */,
 				FC2126D32BD6011C002A51CB /* UpdateView.swift in Sources */,
+				FC2126F82BD73BE6002A51CB /* NetworkService+Fetch.swift in Sources */,
 				FC6DA5C22BD4EDA100EE029A /* TodoApp.swift in Sources */,
 				FC2126CC2BD5C86E002A51CB /* Samples.swift in Sources */,
 				FC2126D72BD60B2F002A51CB /* CreateView.swift in Sources */,
@@ -230,7 +258,9 @@
 				FC2126CA2BD5C76A002A51CB /* TaskItem.swift in Sources */,
 				FC2126C12BD58EF4002A51CB /* Card.swift in Sources */,
 				FC37DBBC2BD4F87A00F159F7 /* Checkbox.swift in Sources */,
+				FC2126FC2BD73C8F002A51CB /* NetworkService+Update.swift in Sources */,
 				FC37DBBE2BD5030400F159F7 /* RadioButton.swift in Sources */,
+				FC2126EE2BD71898002A51CB /* TaskManager.swift in Sources */,
 				FC2126E42BD62B9E002A51CB /* TaskListView.swift in Sources */,
 				FC2126DB2BD616E2002A51CB /* Settings.swift in Sources */,
 				FC2126D02BD5E88A002A51CB /* NewTask.swift in Sources */,
@@ -238,6 +268,8 @@
 				FC2126E62BD64609002A51CB /* TaskListView+Tasks.swift in Sources */,
 				FC2126C32BD59EB1002A51CB /* Date+Extension.swift in Sources */,
 				FC2126EC2BD6E7CA002A51CB /* TaskNavigation.swift in Sources */,
+				FC2126FA2BD73C68002A51CB /* NetworkService+Create.swift in Sources */,
+				FC2126FE2BD73CB6002A51CB /* NetworkService+Delete.swift in Sources */,
 				FC2126CE2BD5CB72002A51CB /* TaskError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
