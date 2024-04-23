@@ -62,6 +62,7 @@
 		FC2126F92BD73C68002A51CB /* NetworkService+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Create.swift"; sourceTree = "<group>"; };
 		FC2126FB2BD73C8F002A51CB /* NetworkService+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Update.swift"; sourceTree = "<group>"; };
 		FC2126FD2BD73CB6002A51CB /* NetworkService+Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Delete.swift"; sourceTree = "<group>"; };
+		FC2126FF2BD763F3002A51CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FC37DBB82BD4F32D00F159F7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FC37DBBB2BD4F87A00F159F7 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		FC37DBBD2BD5030400F159F7 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
@@ -154,6 +155,7 @@
 		FC6DA5C02BD4EDA100EE029A /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				FC2126FF2BD763F3002A51CB /* Info.plist */,
 				FC2126F12BD71E89002A51CB /* Network */,
 				FC2126C82BD5C74D002A51CB /* Models */,
 				FC2126D12BD600A8002A51CB /* Views */,
@@ -407,6 +409,7 @@
 				DEVELOPMENT_TEAM = N477T5ZBLS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Todo/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -439,6 +442,7 @@
 				DEVELOPMENT_TEAM = N477T5ZBLS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Todo/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
