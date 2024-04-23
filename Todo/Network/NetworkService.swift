@@ -12,7 +12,7 @@ struct NetworkService {
     static let shared = Self()
     
     var session: URLSession = .shared
-    var baseURL: URL = .init(string: "https://localhost:7104")!
+    var baseURL: URL = .init(string: "http://localhost:5181")!
     var encoder: JSONEncoder = .init()
     var decoder: JSONDecoder = .init()
     

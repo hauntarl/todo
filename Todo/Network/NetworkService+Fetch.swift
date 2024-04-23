@@ -33,11 +33,12 @@ extension NetworkService {
     }
     
     /// Builds url for fetching list of tasks
-    func fetchTasksURL(filterBy: Bool, sortBy: String) -> URL {
-        let params: [URLQueryItem] = [
-            .init(name: "completed", value: String(filterBy)),
-            .init(name: "sort_by", value: sortBy)
-        ]
+    func fetchTasksURL(filterBy: Bool?, sortBy: String) -> URL {
+        var params: [URLQueryItem] = []
+        if let filterBy {
+            params.append(.init(name: "completed", value: String(filterBy)))
+        }
+        params.append(.init(name: "sort_by", value: sortBy))
         return buildURL(
             for: "/tasks",
             relativeTo: baseURL,

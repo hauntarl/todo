@@ -31,8 +31,15 @@ class Settings: ObservableObject {
         case complete = "Complete"
         case incomplete = "Incomplete"
         
-        var description: Bool {
-            self == .complete
+        var description: Bool? {
+            switch self {
+            case .all:
+                nil
+            case .complete:
+                true
+            case .incomplete:
+                false
+            }
         }
     }
     
