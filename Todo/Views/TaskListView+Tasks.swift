@@ -14,41 +14,49 @@ extension TaskListView {
     var taskList: some View {
         ScrollView {
             LazyVStack(spacing: 16) {
-                ForEach(items, content: buildTaskDetails)
+                ForEach(manager.items, content: buildTaskDetails)
             }
+            .animation(.bouncy(duration: 0.75), value: manager.items)
         }
         .scrollIndicators(.hidden)
     }
     
     func buildTaskDetails(for item: TaskItem) -> some View {
-        let index = items.firstIndex { $0.id == item.id }!
+        let index = manager.items.firstIndex(of: item)!
         
         return Card(
             title: item.description,
             dueDate: item.dueAt ?? .defaultDate,
             createdDate: item.createdAt,
-            isCompleted: $items[index].completed,
-            onEdit: { edit(task: item) },
-            onDelete: { deleteTask(at: index) }
+            isCompleted: $manager.items[index].completed,
+            onEdit: { showEditView(for: item) },
+            onDelete: { delete(task: item) }
         )
-        .transition(.scale.combined(with: .move(edge: .leading)))
-        .onChange(of: items[index].completed) {
-            update(task: items[index])
+        .transition(
+            .asymmetric(
+                insertion: .scale.combined(with: .move(edge: .trailing)),
+                removal: .scale.combined(with: .move(edge: .leading))
+            )
+        )
+        .onChange(of: manager.items[index].completed) {
+            update(task: manager.items[index])
         }
     }
     
-    func edit(task: TaskItem) {
+    func showEditView(for task: TaskItem) {
         route.navigate(to: .editTask(item: task))
     }
     
     func update(task: TaskItem) {
-        // TODO: Update task completion status
+        Task {
+            await manager.edit(task: task)
+        }
     }
     
-    func deleteTask(at index: Int) {
-        withAnimation(.bouncy(duration: 0.75)) {
-            _ = items.remove(at: index)
+    func delete(task: TaskItem) {
+        manager.items.removeAll { $0.id == task.id }
+        Task {
+            await manager.deleteTask(for: task.id)
         }
-        // TODO: Remove task
     }
 }

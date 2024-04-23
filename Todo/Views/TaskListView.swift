@@ -14,8 +14,8 @@ import SwiftUI
     - items: List of task items to display
  */
 struct TaskListView: View {
+    @EnvironmentObject var manager: TaskManager
     @EnvironmentObject var route: TaskNavigation
-    @State var items: [TaskItem] = TaskItem.samples
     
     var body: some View {
         VStack(alignment: .center, spacing: .zero) {
@@ -60,18 +60,23 @@ struct TaskListView: View {
 
 #Preview {
     struct TaskListViewPreview: View {
-        @StateObject private var taskNavigation = TaskNavigation()
+        @StateObject private var manager = TaskManager()
+        @StateObject private var route = TaskNavigation()
         @StateObject private var settings = Settings()
         
         var body: some View {
-            NavigationStack(path: $taskNavigation.path) {
+            NavigationStack(path: $route.path) {
                 TaskListView()
                     .navigationDestination(
                         for: TaskNavigation.Destination.self,
                         destination: destination
                     )
+                    .task {
+                        await manager.fetchTasks(for: settings)
+                    }
             }
-            .environmentObject(taskNavigation)
+            .environmentObject(manager)
+            .environmentObject(route)
             .environmentObject(settings)
         }
         

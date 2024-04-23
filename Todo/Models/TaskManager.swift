@@ -56,9 +56,6 @@ class TaskManager: ObservableObject {
         await withErrorHandling {
             try await service.update(at: url, for: task)
         }
-        if let index = items.firstIndex(of: task) {
-            items[index] = task
-        }
     }
     
     /// Deletes a task associated to the provided id.
@@ -67,7 +64,6 @@ class TaskManager: ObservableObject {
         await withErrorHandling {
             try await service.delete(at: url)
         }
-        items.removeAll { $0.id == id }
     }
     
     /// Executes an asynchronous action with error handling
