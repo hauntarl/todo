@@ -75,7 +75,6 @@ struct NetworkService {
     }
 }
 
-
 /// NetworkError enum used for throwing specific network errors.
 enum NetworkError: Error {
     case parsing(String)

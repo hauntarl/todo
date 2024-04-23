@@ -15,7 +15,7 @@ import SwiftUI
     - items: Holds the list of `TaskItem` objects
     - errorMessage: Holds any error messages generated throughout the app
  
- Refer [Model View (MV)](https://forums.developer.apple.com/forums/thread/699003)
+ Refer [Model View (MV)](https://betterprogramming.pub/swiftui-architecture-a-complete-guide-to-mv-pattern-approach-5f411eaaaf9e)
  architecture for more details.
  */
 @MainActor
