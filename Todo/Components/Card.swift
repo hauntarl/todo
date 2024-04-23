@@ -29,16 +29,17 @@ struct Card: View {
     var body: some View {
         HStack(alignment: .center, spacing: .zero) {
             editButton
-            Spacer().frame(width: 20)
+            Spacer().frame(width: 24)
             details
             Spacer()
             checkbox
-            Spacer().frame(width: 20)
+            Spacer().frame(width: 15)
             deleteButton
         }
-        .padding(16)
+        .padding(.horizontal, 15)
+        .padding(.vertical, 14)
         .background {
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 8)
                 .fill(.taskSecondary)
         }
     }
@@ -47,12 +48,11 @@ struct Card: View {
     private var details: some View {
         VStack(alignment: .leading, spacing: .zero) {
             Text(title)
-                .font(.interBody)
-                .fontWeight(.medium)
+                .font(.interMediumBody)
                 .lineLimit(2)
                 .truncationMode(.tail)
             
-            Spacer().frame(height: 6)
+            Spacer().frame(height: 5)
             
             Text("Due: \(dueDate.formatted)")
                 .font(.interCaption)
@@ -67,13 +67,26 @@ struct Card: View {
 
     // Manages the task's isComplete state
     private var checkbox: some View {
-        Checkbox(isSelected: $isCompleted, size: 24)
+        ToggleIcon(
+            isActive: isCompleted,
+            active: .checkboxFilled,
+            inactive: .checkbox,
+            size: 18.75
+        )
+        .padding((25 - 18.75) / 2)
+        .onTapGesture {
+            withAnimation(.bouncy(duration: 0.75)) {
+                isCompleted.toggle()
+            }
+        }
     }
     
     // Manages the task's edit action
     private var editButton: some View {
         Button(action: onEdit) {
-            Image(systemName: "pencil")
+            Image.icon(for: .pencil)
+                .frame(width: 18.75, height: 18.75)
+                .padding((25 - 18.75) / 2)
         }
         .font(.title2)
         .fontWeight(.black)
@@ -83,7 +96,10 @@ struct Card: View {
     // Manages the task's delete action
     private var deleteButton: some View {
         Button(action: onDelete) {
-            Image(systemName: "trash.fill")
+            Image.icon(for: .trash)
+                .frame(width: 14, height: 18)
+                .padding(.vertical, (24 - 18) / 2)
+                .padding(.horizontal, (24 - 14) / 2)
         }
         .font(.title2)
         .foregroundStyle(.accent)

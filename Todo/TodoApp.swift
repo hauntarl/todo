@@ -12,7 +12,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
     ) -> Bool {
-        Font.load(name: "Inter", withExtension: "ttf")
+        Font.load(name: "Inter-Regular", withExtension: "ttf")
+        Font.load(name: "Inter-Medium", withExtension: "ttf")
         return true
     }
 }

@@ -51,17 +51,13 @@ struct SettingsView: View {
                 .font(.interTitle)
             
             ForEach(Settings.FilterBy.allCases, id: \.self) { option in
-                HStack(alignment: .center, spacing: 20) {
-                    RadioButton(isActive: settings.filter == option, size: 20)
-                    Text(option.rawValue)
-                }
-                .font(.interBody)
-                .onTapGesture {
-                    withAnimation {
-                        settings.filter = option
+                buildOption(isActive: settings.filterBy == option, name: option.rawValue) {
+                    withAnimation(.bouncy(duration: 0.75)) {
+                        settings.filterBy = option
                     }
                 }
             }
+            .font(.interBody)
             .padding(.leading, 4)
         }
         .foregroundStyle(.taskPrimary)
@@ -73,17 +69,13 @@ struct SettingsView: View {
                 .font(.interTitle)
             
             ForEach(Settings.SortBy.allCases, id: \.self) { option in
-                HStack(alignment: .center, spacing: 20) {
-                    RadioButton(isActive: settings.sortBy == option, size: 20)
-                    Text(option.rawValue)
-                }
-                .font(.interBody)
-                .onTapGesture {
-                    withAnimation {
+                buildOption(isActive: settings.sortBy == option, name: option.rawValue) {
+                    withAnimation(.bouncy(duration: 0.75)) {
                         settings.sortBy = option
                     }
                 }
             }
+            .font(.interBody)
             .padding(.leading, 4)
         }
         .foregroundStyle(.taskPrimary)
@@ -95,20 +87,33 @@ struct SettingsView: View {
                 .font(.interTitle)
             
             ForEach(Settings.OrderBy.allCases, id: \.self) { option in
-                HStack(alignment: .center, spacing: 20) {
-                    RadioButton(isActive: settings.orderBy == option, size: 20)
-                    Text(option.rawValue)
-                }
-                .font(.interBody)
-                .onTapGesture {
-                    withAnimation {
+                buildOption(isActive: settings.orderBy == option, name: option.rawValue) {
+                    withAnimation(.bouncy(duration: 0.75)) {
                         settings.orderBy = option
                     }
                 }
             }
+            .font(.interBody)
             .padding(.leading, 4)
         }
         .foregroundStyle(.taskPrimary)
+    }
+    
+    private func buildOption(
+        isActive: Bool,
+        name: String,
+        action: @escaping () -> Void
+    ) -> some View {
+        HStack(alignment: .center, spacing: 20) {
+            ToggleIcon(
+                isActive: isActive,
+                active: .radioButtonFilled,
+                inactive: .radioButton,
+                size: 20
+            )
+            Text(name)
+        }
+        .onTapGesture(perform: action)
     }
     
     private var saveButton: some View {

@@ -25,7 +25,7 @@ class TaskManager: ObservableObject {
     /// filter and sort configuration.
     func fetchTasks(for config: Settings) async {
         let url = service.fetchTasksURL(
-            filterBy: config.filter.description,
+            filterBy: config.filterBy.description,
             sortBy: "\(config.orderBy.description)\(config.sortBy.description)"
         )
         await withErrorHandling {

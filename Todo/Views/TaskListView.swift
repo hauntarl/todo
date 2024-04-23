@@ -17,16 +17,24 @@ struct TaskListView: View {
     var body: some View {
         VStack(alignment: .center, spacing: .zero) {
             navigationTitle
-            Spacer().frame(height: 20)
+            Spacer().frame(height: 22)
             taskList
         }
-        .padding(.horizontal)
+        .padding(.horizontal, 16)
+        .padding(.top, 67)
+        .ignoresSafeArea(edges: .top)
     }
     
     private var navigationTitle: some View {
-        HStack(alignment: .firstTextBaseline, spacing: .zero) {
-            navigationButton(icon: "gearshape.fill") {
+        HStack(alignment: .center, spacing: .zero) {
+            navigationButton {
                 route.navigate(to: .settings)
+            } icon: {
+                Image.icon(for: .gear)
+                    .frame(width: 27.24, height: 28)
+                    .padding(.horizontal, (35 - 27.24) / 2)
+                    .padding(.vertical, (35 - 28) / 2)
+                    .foregroundStyle(.taskPrimary)
             }
             
             Spacer()
@@ -37,21 +45,24 @@ struct TaskListView: View {
             
             Spacer()
             
-            navigationButton(icon: "plus.circle.fill") {
+            navigationButton {
                 route.navigate(to: .newTask)
+            } icon: {
+                Image.icon(for: .plusCircleFilled)
+                    .frame(width: 29.17, height: 29.17)
+                    .padding((35 - 29.17) / 2)
+                    .foregroundStyle(.taskPrimary)
             }
         }
-        .padding(.horizontal)
+        .padding(.horizontal, 27 - 16)
     }
     
     private func navigationButton(
-        icon: String,
-        action: @escaping () -> Void
+        action: @escaping () -> Void,
+        icon: () -> some View
     ) -> some View {
         Button(action: action) {
-            Image(systemName: icon)
-                .font(.title)
-                .foregroundStyle(.taskPrimary)
+            icon()
         }
     }
 }

@@ -22,20 +22,20 @@ struct TextInputField: View {
             .foregroundStyle(.taskPrimary)
             .textInputAutocapitalization(.words)
             .textFieldStyle(.plain)
-            .padding(12)
+            .padding(11)
             .background(filledRectangle)
     }
     
     // Displays a background for the component
     private var filledRectangle: some View {
-        RoundedRectangle(cornerRadius: 5)
+        RoundedRectangle(cornerRadius: 3)
             .fill(.taskSecondary)
             .overlay(!text.isEmpty ? strokedRectangle : nil)
     }
     
     // Displays a border around the component
     private var strokedRectangle: some View {
-        RoundedRectangle(cornerRadius: 5)
+        RoundedRectangle(cornerRadius: 3)
             .stroke(.taskPrimary, lineWidth: 1)
             .padding(0.5)
     }

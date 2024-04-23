@@ -28,7 +28,7 @@ struct DateInputField: View {
                 Spacer()
                 calendarButton
             }
-            .padding(12)
+            .padding(11)
             .background(filledRectangle)
         }
     }
@@ -47,10 +47,12 @@ struct DateInputField: View {
             isShowingCalendar = true
             onTapCalendar()
         } label: {
-            Image(systemName: "calendar")
+            Image.icon(for: .calendar)
+                .frame(width: 18.75, height: 20.83)
+                .padding(.vertical, (25 - 20.83) / 2)
+                .padding(.horizontal, (25 - 18.75) / 2)
         }
         .foregroundStyle(.taskPrimary)
-        .font(.title2)
         .popover(isPresented: $isShowingCalendar) {
             datePicker
                 .presentationDetents([.medium])
@@ -86,14 +88,14 @@ struct DateInputField: View {
     
     // Displays a background for the component
     private var filledRectangle: some View {
-        RoundedRectangle(cornerRadius: 5)
+        RoundedRectangle(cornerRadius: 4)
             .fill(.taskSecondary)
             .overlay(date != nil ? strokedRectangle : nil)
     }
     
     // Displays a border around the component
     private var strokedRectangle: some View {
-        RoundedRectangle(cornerRadius: 5)
+        RoundedRectangle(cornerRadius: 4)
             .stroke(.taskPrimary, lineWidth: 1)
             .padding(0.5)
     }

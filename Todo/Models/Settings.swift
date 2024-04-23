@@ -11,7 +11,7 @@ import Foundation
  Settings model provides data for the `SettingsView`.
  
  - Parameters:
-    - filter: Enum to determine filter for tasks based on its `completed` status
+    - filterBy: Enum to determine filter for tasks based on its `completed` status
     - sortBy: Enum to determine the sort key for tasks
     - orderBy: Enum to determine the order of tasks
  
@@ -22,7 +22,7 @@ import Foundation
  more details.
  */
 class Settings: ObservableObject {
-    @Published var filter: FilterBy = .all
+    @Published var filterBy: FilterBy = .all
     @Published var sortBy: SortBy = .created
     @Published var orderBy: OrderBy = .descending
     

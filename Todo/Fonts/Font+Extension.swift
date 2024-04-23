@@ -40,11 +40,19 @@ extension Font {
         .inter(size: 16)
     }
     
+    static var interMediumBody: Self {
+        .interMedium(size: 16)
+    }
+    
     static var interCaption: Self {
         .inter(size: 14)
     }
     
     static func inter(size: CGFloat) -> Self {
-        .custom("Inter", size: size)
+        .custom("Inter-Regular", size: size)
+    }
+    
+    static func interMedium(size: CGFloat) -> Self {
+        .custom("Inter-Medium", size: size)
     }
 }

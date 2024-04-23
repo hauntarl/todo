@@ -31,13 +31,14 @@
 		FC2126FC2BD73C8F002A51CB /* NetworkService+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126FB2BD73C8F002A51CB /* NetworkService+Update.swift */; };
 		FC2126FE2BD73CB6002A51CB /* NetworkService+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2126FD2BD73CB6002A51CB /* NetworkService+Delete.swift */; };
 		FC37DBB92BD4F32D00F159F7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC37DBB82BD4F32D00F159F7 /* Launch Screen.storyboard */; };
-		FC37DBBC2BD4F87A00F159F7 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37DBBB2BD4F87A00F159F7 /* Checkbox.swift */; };
-		FC37DBBE2BD5030400F159F7 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC37DBBD2BD5030400F159F7 /* RadioButton.swift */; };
 		FC6DA5C22BD4EDA100EE029A /* TodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6DA5C12BD4EDA100EE029A /* TodoApp.swift */; };
 		FC6DA5C62BD4EDA200EE029A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6DA5C52BD4EDA200EE029A /* Assets.xcassets */; };
 		FC6DA5C92BD4EDA200EE029A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6DA5C82BD4EDA200EE029A /* Preview Assets.xcassets */; };
 		FC7660A42BD7B5D0004BDA61 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7660A32BD7B5D0004BDA61 /* Font+Extension.swift */; };
-		FC7660A72BD7B62C004BDA61 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC7660A62BD7B62C004BDA61 /* Inter.ttf */; };
+		FC7660A92BD7C487004BDA61 /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7660A82BD7C487004BDA61 /* Image+Extension.swift */; };
+		FC7660AB2BD7C584004BDA61 /* ToggleIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7660AA2BD7C584004BDA61 /* ToggleIcon.swift */; };
+		FC7660AE2BD7D6B7004BDA61 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC7660AC2BD7D6B7004BDA61 /* Inter-Regular.ttf */; };
+		FC7660AF2BD7D6B7004BDA61 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC7660AD2BD7D6B7004BDA61 /* Inter-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,14 +67,15 @@
 		FC2126FD2BD73CB6002A51CB /* NetworkService+Delete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkService+Delete.swift"; sourceTree = "<group>"; };
 		FC2126FF2BD763F3002A51CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FC37DBB82BD4F32D00F159F7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		FC37DBBB2BD4F87A00F159F7 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
-		FC37DBBD2BD5030400F159F7 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		FC6DA5BE2BD4EDA100EE029A /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6DA5C12BD4EDA100EE029A /* TodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoApp.swift; sourceTree = "<group>"; };
 		FC6DA5C52BD4EDA200EE029A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC6DA5C82BD4EDA200EE029A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FC7660A32BD7B5D0004BDA61 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
-		FC7660A62BD7B62C004BDA61 /* Inter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inter.ttf; sourceTree = "<group>"; };
+		FC7660A82BD7C487004BDA61 /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
+		FC7660AA2BD7C584004BDA61 /* ToggleIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleIcon.swift; sourceTree = "<group>"; };
+		FC7660AC2BD7D6B7004BDA61 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
+		FC7660AD2BD7D6B7004BDA61 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,11 +133,11 @@
 		FC37DBBA2BD4F86300F159F7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				FC37DBBB2BD4F87A00F159F7 /* Checkbox.swift */,
-				FC37DBBD2BD5030400F159F7 /* RadioButton.swift */,
+				FC7660AA2BD7C584004BDA61 /* ToggleIcon.swift */,
 				FC2126C02BD58EF4002A51CB /* Card.swift */,
 				FC2126C42BD5A03A002A51CB /* DateInputField.swift */,
 				FC2126C62BD5C3BF002A51CB /* TextInputField.swift */,
+				FC7660A82BD7C487004BDA61 /* Image+Extension.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -185,7 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				FC7660A32BD7B5D0004BDA61 /* Font+Extension.swift */,
-				FC7660A62BD7B62C004BDA61 /* Inter.ttf */,
+				FC7660AD2BD7D6B7004BDA61 /* Inter-Medium.ttf */,
+				FC7660AC2BD7D6B7004BDA61 /* Inter-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -249,9 +252,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC37DBB92BD4F32D00F159F7 /* Launch Screen.storyboard in Resources */,
+				FC7660AE2BD7D6B7004BDA61 /* Inter-Regular.ttf in Resources */,
+				FC7660AF2BD7D6B7004BDA61 /* Inter-Medium.ttf in Resources */,
 				FC6DA5C92BD4EDA200EE029A /* Preview Assets.xcassets in Resources */,
 				FC6DA5C62BD4EDA200EE029A /* Assets.xcassets in Resources */,
-				FC7660A72BD7B62C004BDA61 /* Inter.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,15 +273,15 @@
 				FC2126F82BD73BE6002A51CB /* NetworkService+Fetch.swift in Sources */,
 				FC7660A42BD7B5D0004BDA61 /* Font+Extension.swift in Sources */,
 				FC6DA5C22BD4EDA100EE029A /* TodoApp.swift in Sources */,
+				FC7660A92BD7C487004BDA61 /* Image+Extension.swift in Sources */,
 				FC2126CC2BD5C86E002A51CB /* Samples.swift in Sources */,
 				FC2126D72BD60B2F002A51CB /* CreateView.swift in Sources */,
 				FC2126DD2BD61C40002A51CB /* SettingsView.swift in Sources */,
 				FC2126C52BD5A03A002A51CB /* DateInputField.swift in Sources */,
+				FC7660AB2BD7C584004BDA61 /* ToggleIcon.swift in Sources */,
 				FC2126CA2BD5C76A002A51CB /* TaskItem.swift in Sources */,
 				FC2126C12BD58EF4002A51CB /* Card.swift in Sources */,
-				FC37DBBC2BD4F87A00F159F7 /* Checkbox.swift in Sources */,
 				FC2126FC2BD73C8F002A51CB /* NetworkService+Update.swift in Sources */,
-				FC37DBBE2BD5030400F159F7 /* RadioButton.swift in Sources */,
 				FC2126EE2BD71898002A51CB /* TaskManager.swift in Sources */,
 				FC2126E42BD62B9E002A51CB /* TaskListView.swift in Sources */,
 				FC2126DB2BD616E2002A51CB /* Settings.swift in Sources */,
