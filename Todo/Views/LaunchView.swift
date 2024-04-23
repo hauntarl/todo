@@ -60,11 +60,7 @@ struct LaunchView: View {
         case .newTask:
             CreateView()
         case .editTask(let item):
-            EditView(item: item) { editedItem in
-                // TODO: Update edited task
-                print("\(editedItem.description)", terminator: ", ")
-                print("\((editedItem.dueAt ?? .defaultDate).formatted)")
-            }
+            EditView(item: item)
         }
     }
     
@@ -101,7 +97,7 @@ struct LaunchView: View {
             }
             .padding()
             .task {
-                try? await Task.sleep(for: .seconds(10))
+                try? await Task.sleep(for: .seconds(5))
                 manager.errorMessage = nil
             }
     }

@@ -56,6 +56,9 @@ class TaskManager: ObservableObject {
         await withErrorHandling {
             try await service.update(at: url, for: task)
         }
+        if let index = items.firstIndex(where: { $0.id == task.id }) {
+            items[index] = task
+        }
     }
     
     /// Deletes a task associated to the provided id.

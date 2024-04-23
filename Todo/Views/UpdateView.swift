@@ -21,8 +21,10 @@ struct UpdateView: View {
     let title: String
     @Binding var description: String
     @Binding var dueDate: Date?
+    let isSaveButtonDisabled: Bool
     let onSave: () -> Void
     
+    @EnvironmentObject private var route: TaskNavigation
     @FocusState private var isDescriptionFieldFocused
     
     var body: some View {
@@ -37,11 +39,20 @@ struct UpdateView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding(.horizontal)
+        .navigationBarBackButtonHidden()
     }
     
     var navigationTitle: some View {
-        Text(title)
-            .font(.largeTitle)
+        ZStack(alignment: .leading) {
+            Button(action: route.dismiss) {
+                Label("Back", systemImage: "chevron.left")
+            }
+            .foregroundStyle(.accent)
+            
+            Text(title)
+                .font(.largeTitle)
+                .frame(maxWidth: .infinity, alignment: .center)
+        }
     }
     
     var taskDescription: some View {
@@ -56,7 +67,9 @@ struct UpdateView: View {
     var taskDueDate: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("Select Due Date")
-            DateInputField(date: $dueDate)
+            DateInputField(date: $dueDate) {
+                isDescriptionFieldFocused = false
+            }
         }
         .padding(.horizontal)
     }
@@ -67,28 +80,35 @@ struct UpdateView: View {
             onSave()
         }
         .foregroundStyle(.taskBackground)
+        .disabled(isSaveButtonDisabled)
         .padding(.horizontal, 20)
         .padding(.vertical, 10)
         .background {
             RoundedRectangle(cornerRadius: 5)
-                .fill(.taskPrimary)
+                .fill(isSaveButtonDisabled ? .accent : .taskPrimary)
         }
+        .animation(.default, value: isSaveButtonDisabled)
     }
 }
 
 #Preview {
     struct UpdateViewPreview: View {
+        @StateObject private var route = TaskNavigation()
         @State private var description = ""
         @State private var dueDate: Date?
         
         var body: some View {
-            UpdateView(
-                title: "Create/Edit",
-                description: $description.animation(),
-                dueDate: $dueDate.animation()
-            ) {
-                print("Save button tapped")
+            NavigationStack(path: $route.path) {
+                UpdateView(
+                    title: "Create/Edit",
+                    description: $description.animation(),
+                    dueDate: $dueDate.animation(),
+                    isSaveButtonDisabled: false
+                ) {
+                    print("Save button tapped")
+                }
             }
+            .environmentObject(route)
         }
     }
     

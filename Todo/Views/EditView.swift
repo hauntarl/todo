@@ -12,45 +12,55 @@ import SwiftUI
  */
 struct EditView: View {
     let item: TaskItem
-    let onEdited: (TaskItem) -> Void
     
+    @EnvironmentObject private var manager: TaskManager
     @EnvironmentObject private var route: TaskNavigation
     @State private var editItem: TaskItem
+    @State private var isSaveButtonDisabled = false
     
     var body: some View {
         UpdateView(
             title: "Edit",
             description: $editItem.description.animation(),
-            dueDate: $editItem.dueAt.animation()
-        ) {
-            // TODO: Save the edited task
-            if editItem != item {
-                onEdited(editItem)
-            }
-            route.dismiss()
-        }
-        .navigationBarBackButtonHidden()
+            dueDate: $editItem.dueAt.animation(),
+            isSaveButtonDisabled: isSaveButtonDisabled,
+            onSave: save
+        )
     }
     
-    init(item: TaskItem, onEdited: @escaping (TaskItem) -> Void) {
+    init(item: TaskItem) {
         self.item = item
-        self.onEdited = onEdited
         self._editItem = .init(initialValue: item)
+    }
+    
+    private func save() {
+        // TODO: Save the edited task
+        guard editItem != item else {
+            route.dismiss()
+            return
+        }
+        
+        Task {
+            await manager.edit(task: editItem)
+            if manager.errorMessage == nil {
+                route.dismiss()
+            }
+        }
     }
 }
 
 #Preview {
     struct EditViewPreview: View {
+        @StateObject private var manager = TaskManager()
         @StateObject private var route = TaskNavigation()
         
         var body: some View {
             NavigationStack(path: $route.path) {
-                EditView(item: TaskItem.samples[0]) { newValue in
-                    print("Item edited:")
-                    print("\t\(newValue.description)")
-                    print("\t\((newValue.dueAt ?? .defaultDate).formatted)")
+                if let item = manager.items.first {
+                    EditView(item: item)
                 }
             }
+            .environmentObject(manager)
             .environmentObject(route)
         }
     }

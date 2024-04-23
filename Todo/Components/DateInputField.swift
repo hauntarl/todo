@@ -15,6 +15,7 @@ import SwiftUI
  */
 struct DateInputField: View {
     @Binding var date: Date?
+    let onTapCalendar: () -> Void
 
     @State private var isShowingCalendar = false
     
@@ -43,6 +44,7 @@ struct DateInputField: View {
     private var calendarButton: some View {
         Button {
             isShowingCalendar = true
+            onTapCalendar()
         } label: {
             Image(systemName: "calendar")
         }
@@ -102,7 +104,9 @@ struct DateInputField: View {
         
         var body: some View {
             VStack {
-                DateInputField(date: $date.animation())
+                DateInputField(date: $date.animation()) {
+                    // Do nothing
+                }
                 Spacer()
             }
             .padding()
