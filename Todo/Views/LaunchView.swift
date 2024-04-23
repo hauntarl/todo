@@ -73,7 +73,9 @@ struct LaunchView: View {
             
             VStack(spacing: 20) {
                 Text("Loading samples...")
+                    .font(.interTitle2)
                     .foregroundStyle(.accent)
+                
                 ProgressView()
             }
             .padding(.bottom, 100)
@@ -86,6 +88,7 @@ struct LaunchView: View {
     /// Displays an error message as a pop-up
     private var errorPopup: some View {
         Text(errorPopupMessage)
+            .font(.interBody)
             .foregroundStyle(.taskBackground)
             .lineLimit(3)
             .frame(maxWidth: .infinity, alignment: .leading)

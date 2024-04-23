@@ -32,7 +32,8 @@ struct TaskListView: View {
             Spacer()
             
             Text("Task List")
-                .font(.largeTitle)
+                .font(.interLargeTitle)
+                .foregroundStyle(.taskPrimary)
             
             Spacer()
             

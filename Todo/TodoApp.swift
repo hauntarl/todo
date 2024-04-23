@@ -7,8 +7,19 @@
 
 import SwiftUI
 
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+    ) -> Bool {
+        Font.load(name: "Inter", withExtension: "ttf")
+        return true
+    }
+}
+
 @main
 struct TodoApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject private var manager = TaskManager()
     @StateObject private var route = TaskNavigation()
     @StateObject private var settings = Settings()

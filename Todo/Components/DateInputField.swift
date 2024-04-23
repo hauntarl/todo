@@ -36,6 +36,7 @@ struct DateInputField: View {
     // Displays formatted currently selected date
     private var content: some View {
         Text(date?.formatted ?? "")
+            .font(.interBody)
             .foregroundStyle(.taskPrimary)
             .transition(.opacity)
     }

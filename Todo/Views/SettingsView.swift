@@ -41,19 +41,21 @@ struct SettingsView: View {
     
     private var navigationTitle: some View {
         Text("Settings")
-            .font(.largeTitle)
+            .font(.interLargeTitle)
+            .foregroundStyle(.taskPrimary)
     }
     
     private var filterOptions: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("Filters")
-                .font(.title2)
+                .font(.interTitle)
             
             ForEach(Settings.FilterBy.allCases, id: \.self) { option in
                 HStack(alignment: .center, spacing: 20) {
                     RadioButton(isActive: settings.filter == option, size: 20)
                     Text(option.rawValue)
                 }
+                .font(.interBody)
                 .onTapGesture {
                     withAnimation {
                         settings.filter = option
@@ -62,18 +64,20 @@ struct SettingsView: View {
             }
             .padding(.leading, 4)
         }
+        .foregroundStyle(.taskPrimary)
     }
     
     private var sortByOptions: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("Sort By")
-                .font(.title2)
+                .font(.interTitle)
             
             ForEach(Settings.SortBy.allCases, id: \.self) { option in
                 HStack(alignment: .center, spacing: 20) {
                     RadioButton(isActive: settings.sortBy == option, size: 20)
                     Text(option.rawValue)
                 }
+                .font(.interBody)
                 .onTapGesture {
                     withAnimation {
                         settings.sortBy = option
@@ -82,18 +86,20 @@ struct SettingsView: View {
             }
             .padding(.leading, 4)
         }
+        .foregroundStyle(.taskPrimary)
     }
     
     private var orderByOptions: some View {
         VStack(alignment: .leading, spacing: 20) {
             Text("Order By")
-                .font(.title2)
+                .font(.interTitle)
             
             ForEach(Settings.OrderBy.allCases, id: \.self) { option in
                 HStack(alignment: .center, spacing: 20) {
                     RadioButton(isActive: settings.orderBy == option, size: 20)
                     Text(option.rawValue)
                 }
+                .font(.interBody)
                 .onTapGesture {
                     withAnimation {
                         settings.orderBy = option
@@ -102,6 +108,7 @@ struct SettingsView: View {
             }
             .padding(.leading, 4)
         }
+        .foregroundStyle(.taskPrimary)
     }
     
     private var saveButton: some View {
@@ -113,6 +120,7 @@ struct SettingsView: View {
                 route.dismiss()
             }
         }
+        .font(.interTitle2)
         .foregroundStyle(.taskBackground)
         .disabled(isSaveButtonDisabled)
         .padding(.horizontal, 20)

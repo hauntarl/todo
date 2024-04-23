@@ -18,6 +18,7 @@ struct TextInputField: View {
     
     var body: some View {
         TextField("", text: $text.animation())
+            .font(.interBody)
             .foregroundStyle(.taskPrimary)
             .textInputAutocapitalization(.words)
             .textFieldStyle(.plain)

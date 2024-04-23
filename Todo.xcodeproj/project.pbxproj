@@ -36,6 +36,8 @@
 		FC6DA5C22BD4EDA100EE029A /* TodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6DA5C12BD4EDA100EE029A /* TodoApp.swift */; };
 		FC6DA5C62BD4EDA200EE029A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6DA5C52BD4EDA200EE029A /* Assets.xcassets */; };
 		FC6DA5C92BD4EDA200EE029A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6DA5C82BD4EDA200EE029A /* Preview Assets.xcassets */; };
+		FC7660A42BD7B5D0004BDA61 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7660A32BD7B5D0004BDA61 /* Font+Extension.swift */; };
+		FC7660A72BD7B62C004BDA61 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC7660A62BD7B62C004BDA61 /* Inter.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		FC6DA5C12BD4EDA100EE029A /* TodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoApp.swift; sourceTree = "<group>"; };
 		FC6DA5C52BD4EDA200EE029A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC6DA5C82BD4EDA200EE029A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FC7660A32BD7B5D0004BDA61 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		FC7660A62BD7B62C004BDA61 /* Inter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inter.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 				FC2126C82BD5C74D002A51CB /* Models */,
 				FC2126D12BD600A8002A51CB /* Views */,
 				FC37DBBA2BD4F86300F159F7 /* Components */,
+				FC7660A52BD7B5FC004BDA61 /* Fonts */,
 				FC6DA5C12BD4EDA100EE029A /* TodoApp.swift */,
 				FC37DBB82BD4F32D00F159F7 /* Launch Screen.storyboard */,
 				FC6DA5C52BD4EDA200EE029A /* Assets.xcassets */,
@@ -174,6 +179,15 @@
 				FC6DA5C82BD4EDA200EE029A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FC7660A52BD7B5FC004BDA61 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FC7660A32BD7B5D0004BDA61 /* Font+Extension.swift */,
+				FC7660A62BD7B62C004BDA61 /* Inter.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +251,7 @@
 				FC37DBB92BD4F32D00F159F7 /* Launch Screen.storyboard in Resources */,
 				FC6DA5C92BD4EDA200EE029A /* Preview Assets.xcassets in Resources */,
 				FC6DA5C62BD4EDA200EE029A /* Assets.xcassets in Resources */,
+				FC7660A72BD7B62C004BDA61 /* Inter.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +267,7 @@
 				FC2126E82BD6E1B8002A51CB /* LaunchView.swift in Sources */,
 				FC2126D32BD6011C002A51CB /* UpdateView.swift in Sources */,
 				FC2126F82BD73BE6002A51CB /* NetworkService+Fetch.swift in Sources */,
+				FC7660A42BD7B5D0004BDA61 /* Font+Extension.swift in Sources */,
 				FC6DA5C22BD4EDA100EE029A /* TodoApp.swift in Sources */,
 				FC2126CC2BD5C86E002A51CB /* Samples.swift in Sources */,
 				FC2126D72BD60B2F002A51CB /* CreateView.swift in Sources */,

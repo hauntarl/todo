@@ -47,6 +47,7 @@ struct Card: View {
     private var details: some View {
         VStack(alignment: .leading, spacing: .zero) {
             Text(title)
+                .font(.interBody)
                 .fontWeight(.medium)
                 .lineLimit(2)
                 .truncationMode(.tail)
@@ -54,12 +55,12 @@ struct Card: View {
             Spacer().frame(height: 6)
             
             Text("Due: \(dueDate.formatted)")
-                .font(.subheadline)
+                .font(.interCaption)
             
             Spacer().frame(height: 4)
             
             Text("Created: \(createdDate.formatted)")
-                .font(.subheadline)
+                .font(.interCaption)
         }
         .foregroundStyle(.taskPrimary)
     }

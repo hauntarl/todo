@@ -47,10 +47,11 @@ struct UpdateView: View {
             Button(action: route.dismiss) {
                 Label("Back", systemImage: "chevron.left")
             }
+            .font(.interTitle2)
             .foregroundStyle(.accent)
             
             Text(title)
-                .font(.largeTitle)
+                .font(.interLargeTitle)
                 .frame(maxWidth: .infinity, alignment: .center)
         }
     }
@@ -58,6 +59,9 @@ struct UpdateView: View {
     var taskDescription: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("To-Do Item Name")
+                .font(.interBody)
+                .foregroundStyle(.taskPrimary)
+            
             TextInputField(text: $description)
                 .focused($isDescriptionFieldFocused)
         }
@@ -67,6 +71,9 @@ struct UpdateView: View {
     var taskDueDate: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("Select Due Date")
+                .font(.interBody)
+                .foregroundStyle(.taskPrimary)
+            
             DateInputField(date: $dueDate) {
                 isDescriptionFieldFocused = false
             }
@@ -79,6 +86,7 @@ struct UpdateView: View {
             isDescriptionFieldFocused = false
             onSave()
         }
+        .font(.interTitle2)
         .foregroundStyle(.taskBackground)
         .disabled(isSaveButtonDisabled)
         .padding(.horizontal, 20)

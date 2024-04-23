@@ -37,7 +37,6 @@ struct EditView: View {
     }
     
     private func save() {
-        // TODO: Save the edited task
         guard editItem != item else {
             route.dismiss()
             return
@@ -62,6 +61,9 @@ struct EditView: View {
                 if let item = manager.items.first {
                     EditView(item: item)
                 }
+            }
+            .task {
+                await manager.fetchTasks(for: .init())
             }
             .environmentObject(manager)
             .environmentObject(route)
