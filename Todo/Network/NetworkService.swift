@@ -19,7 +19,9 @@ struct NetworkService {
     /// Executes provided request, performs verification against errors, returns response
     /// data and associated meta data.
     func execute(request: URLRequest) async throws -> (Data, HTTPURLResponse) {
-        let (data, response) = try await session.data(for: request)
+        guard let (data, response) = try? await session.data(for: request) else {
+            throw NetworkError.response("Couldn't process request.\n\(request.description)")
+        }
         
         // Check if the response is an HTTPURLResponse
         guard let response = response as? HTTPURLResponse else {
