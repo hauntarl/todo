@@ -11,8 +11,10 @@ import SwiftUI
  SettingsView displays all the available filter and sort options for the task list
  */
 struct SettingsView: View {
+    @EnvironmentObject private var manager: TaskManager
     @EnvironmentObject private var route: TaskNavigation
     @EnvironmentObject private var settings: Settings
+    @State private var isSaveButtonDisabled = false
     
     var body: some View {
         VStack(alignment: .center, spacing: .zero) {
@@ -104,21 +106,28 @@ struct SettingsView: View {
     
     private var saveButton: some View {
         Button("Save") {
-            // TODO: Save settings and update tasks based on new filters
-            route.dismiss()
+            isSaveButtonDisabled = true
+            Task {
+                await manager.fetchTasks(for: settings)
+                isSaveButtonDisabled = false
+                route.dismiss()
+            }
         }
         .foregroundStyle(.taskBackground)
+        .disabled(isSaveButtonDisabled)
         .padding(.horizontal, 20)
         .padding(.vertical, 10)
         .background {
             RoundedRectangle(cornerRadius: 5)
-                .fill(.taskPrimary)
+                .fill(isSaveButtonDisabled ? .accent : .taskPrimary)
         }
+        .animation(.default, value: isSaveButtonDisabled)
     }
 }
 
 #Preview {
     struct SettingsViewPreview: View {
+        @StateObject private var manager = TaskManager()
         @StateObject private var route = TaskNavigation()
         @StateObject private var settings = Settings()
         
@@ -126,6 +135,7 @@ struct SettingsView: View {
             NavigationStack(path: $route.path) {
                 SettingsView()
             }
+            .environmentObject(manager)
             .environmentObject(route)
             .environmentObject(settings)
         }
