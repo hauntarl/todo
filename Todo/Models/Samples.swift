@@ -8,6 +8,56 @@
 
 import Foundation
 
+/// As the api is currently using in-memory database, this extension creates some sample
+/// tasks, intentionally done for demo purposes.
+///
+/// TODO: Remove once the api uses persistent storage
+extension NewTask {
+    static let samples: [NewTask] = [
+        .init(
+            description: "Meal Prep",
+            dueAt: randomDate,
+            completed: Bool.random()
+        ),
+        .init(
+            description: "Send Email",
+            dueAt: randomDate,
+            completed: Bool.random()
+        ),
+        .init(
+            description: "Write Offer",
+            dueAt: randomDate,
+            completed: Bool.random()
+        ),
+        .init(
+            description: "Organize Files",
+            dueAt: randomDate,
+            completed: Bool.random()
+        ),
+        .init(
+            description: "Blog Post",
+            dueAt: randomDate,
+            completed: Bool.random()
+        ),
+        .init(
+            description: "Clean House",
+            dueAt: randomDate,
+            completed: Bool.random()
+        ),
+        .init(
+            description: "Grocery Shopping",
+            dueAt: randomDate,
+            completed: Bool.random()
+        )
+    ]
+    
+    private static var randomDate: Date {
+        .now.addingTimeInterval(TimeInterval(timeIntervalRange.randomElement()!))
+    }
+    
+    private static let timeIntervalRange = (60 * 60 * 24)...(60 * 60 * 24 * 20)
+}
+
 extension TaskItem {
     static var samples: [Self] = {
         try! JSONDecoder().decode([Self].self, from: sampleJSON)

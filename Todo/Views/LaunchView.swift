@@ -8,16 +8,34 @@
 import SwiftUI
 
 struct LaunchView: View {
+    @EnvironmentObject private var manager: TaskManager
     @EnvironmentObject private var route: TaskNavigation
+    @EnvironmentObject private var settings: Settings
     @State private var showingContent = false
+    @State private var errorPopupMessage: String?
     
     var body: some View {
-        if showingContent {
-            content
-                .transition(.move(edge: .trailing))
-        } else {
-            loading
-                .transition(.move(edge: .leading))
+        ZStack(alignment: .bottom) {
+            if showingContent {
+                content
+                    .zIndex(1)
+                    .transition(.move(edge: .trailing))
+            } else {
+                loading
+                    .zIndex(1)
+                    .transition(.move(edge: .leading))
+            }
+            
+            if errorPopupMessage != nil {
+                errorPopup
+                    .zIndex(2)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
+        }
+        .onChange(of: manager.errorMessage) { _, newValue in
+            withAnimation(.bouncy(duration: 0.75)) {
+                errorPopupMessage = newValue
+            }
         }
     }
     
@@ -60,15 +78,52 @@ struct LaunchView: View {
                     .foregroundStyle(.accent)
                 ProgressView()
             }
+            .padding(.bottom, 100)
         }
-        .onAppear(perform: loadTasks)
+        .task {
+            await fetchTasks()
+        }
     }
     
-    private func loadTasks() {
-        Task {
-            try? await Task.sleep(for: .seconds(2))
-            withAnimation(.bouncy(duration: 0.75)) {
-                showingContent = true
+    private var errorPopup: some View {
+        Text(errorPopupMessage ?? "")
+            .foregroundStyle(.taskBackground)
+            .lineLimit(3)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding()
+            .background {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(.accent)
+                    .shadow(radius: 10)
+            }
+            .padding()
+            .task {
+                try? await Task.sleep(for: .seconds(5))
+                manager.errorMessage = nil
+            }
+    }
+    
+    private func fetchTasks() async {
+        // TODO: Remove createSamples() once the server uses persistent storage
+        await createSamples()
+        await manager.fetchTasks(using: settings)
+//        if manager.errorMessage == nil {
+//            withAnimation(.bouncy(duration: 0.75)) {
+//                showingContent = true
+//            }
+//        }
+        print(manager.items)
+    }
+    
+    /// As the api is currently using in-memory database, this function pre-populates
+    /// the database with some sample tasks, intentionally done for demo purposes.
+    /// `TODO:` Remove once the api uses persistent storage
+    private func createSamples() async {
+        await withTaskGroup(of: Void.self) { group in
+            for item in NewTask.samples {
+                group.addTask {
+                    await manager.create(task: item)
+                }
             }
         }
     }
@@ -76,11 +131,13 @@ struct LaunchView: View {
 
 #Preview {
     struct LaunchViewPreview: View {
+        @StateObject private var manager = TaskManager()
         @StateObject private var route = TaskNavigation()
         @StateObject private var settings = Settings()
         
         var body: some View {
             LaunchView()
+                .environmentObject(manager)
                 .environmentObject(route)
                 .environmentObject(settings)
         }
