@@ -23,8 +23,8 @@ import Foundation
  */
 class Settings: ObservableObject {
     @Published var filterBy: FilterBy = .all
-    @Published var sortBy: SortBy = .created
-    @Published var orderBy: OrderBy = .descending
+    @Published var sortBy: SortBy = .due
+    @Published var orderBy: OrderBy = .ascending
     
     enum FilterBy: String, CaseIterable {
         case all = "All"
