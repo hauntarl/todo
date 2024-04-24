@@ -35,10 +35,9 @@ struct CreateView: View {
         isSaveButtonDisabled = true
         Task {
             await manager.create(task: newTask)
+            isSaveButtonDisabled = false
             if manager.errorMessage == nil {
                 route.dismiss()
-            } else {
-                isSaveButtonDisabled = false
             }
         }
     }

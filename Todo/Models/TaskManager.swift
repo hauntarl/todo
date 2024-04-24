@@ -77,6 +77,7 @@ class TaskManager: ObservableObject {
     private func withErrorHandling(action: () async throws -> Void) async {
         do {
             try await action()
+            errorMessage = nil
         } catch NetworkError.parsing(let message) {
             errorMessage = message
         } catch NetworkError.response(let message) {
