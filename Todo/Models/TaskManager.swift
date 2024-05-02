@@ -57,11 +57,15 @@ class TaskManager: ObservableObject {
     /// Updates an existing task with the edited task details.
     func edit(task: TaskItem) async {
         let url = service.updateTaskURL(for: task.id)
-        await withErrorHandling {
+        await withErrorHandling { [unowned self] in
             try await service.update(at: url, for: task)
-        }
-        if let index = items.firstIndex(where: { $0.id == task.id }) {
-            items[index] = task
+            // Work around for Actor-isolated property cannot be passed 'inout' to 'async' function call
+            // https://stackoverflow.com/a/70748235
+            var items = self.items
+            if let index = items.firstIndex(where: { $0.id == task.id }) {
+                items[index] = task
+            }
+            self.items = items
         }
     }
     
